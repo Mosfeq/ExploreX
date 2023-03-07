@@ -1,5 +1,5 @@
 .wall {
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/18515/PIA09959-1280x800_copy.jpg);
+    background: url(https://i.pinimg.com/originals/d9/9c/bb/d99cbbf4c37b4ce8517f384a907312d7.jpg);
     background-size: cover;
 }
 
@@ -51,7 +51,7 @@ body:before {
     height: 100%;
     position: absolute;
     opacity: 0;
-    animation: fade 12s infinite linear;
+    animation: fade 3s infinite linear;
     animation-delay: 0;
 }
 

@@ -39,6 +39,6 @@ button:hover{
     box-shadow: 0 0 5px #9900ff,
                 0 0 25px #9900ff,
                 0 0 50px #9900ff,
-                0 0 200px #9900ff;
-     /* -webkit-box-reflect:below 1px linear-gradient(transparent, #0005); */
+                0 0 200px #9900ff,
+                0 0 250px #9900ff;
 }
