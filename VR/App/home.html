@@ -9,7 +9,6 @@
 
       <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
 
-      <link href="/fonts/Aboreto-Regular.ttf" rel="stylesheet"/>
       
 
       <link rel="stylesheet" href="home.css">
@@ -25,28 +24,33 @@
       <a-scene>
             <a-assets>
 
-                  <img id="my-image" src="/assets/car.jpg" />
+                  <img id="merc" src="/assets/merc.jpg" />
+                  <img id="ferarri" src="/assets/ferarri.jpg" />
+                  <img id="mclaren" src="/assets/mclaren.jpg" />
+                  <img id="redbull" src="/assets/redbull.jpg" />
 
                   <a-asset-item id="customFont" src="/fonts/Aboreto-Regular.ttf"></a-asset-item>
 
             </a-assets>
 
 
-            <a-image src="#my-image" width="3" height="3" position="2 6.5 0"; animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>
-            <a-image src="#my-image" width="3" height="3" position="7 6.5 0"; animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>
-            <a-image src="#my-image" width="3" height="3" position="-3 6.5 0"; animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>
-            <a-image src="#my-image" width="3" height="3" position="-8 6.5 0"; animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>
+            <a-image src="#merc" width="4" height="4" position="2 7 0";></a-image>
+            <a-image src="#ferarri" width="4" height="4" position="7 7 0";></a-image>
+            <a-image src="#mclaren" width="4" height="4" position="-3 7 0";></a-image>
+            <a-image src="#redbull" width="4" height="4" position="-8 7 0";></a-image>
 
-            <a-entity id="welcome" text="value: Welcome to ExploreX"; font="#customFont"; position = "5.5 7 10"; scale="20 20 20"> </a-entity>
-            <a-entity id="site" text="value: Site 1"; position = "-3.5 4.5 0"; scale="10 10 10"> </a-entity>
-            <a-entity id="site" text="value: Site 2"; position = "1.5 4.5 0"; scale="10 10 10"> </a-entity>
-            <a-entity id="site" text="value: Site 3"; position = "6.5 4.5 0"; scale="10 10 10"> </a-entity>
-            <a-entity id="site" text="value: Site 4"; position = "11.5 4.5 0"; scale="10 10 10"> </a-entity>
+            <!-- animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1" -->
+
+            <a-text id="welcome" value="Welcome to ExploreX"; position = "-7.5 8.5 8"; scale="7 7 7"; color="green"; side="double"> </a-text>
+            <a-text id="site" value="Site 1"; position = "-8.9 4.2 0"; scale="3 3 3"; side="double"> </a-text>
+            <a-text id="site" value="Site 2"; position = "-3.9 4.2 0"; scale="3 3 3"; side="double"> </a-text>
+            <a-text id="site" value="Site 3"; position = "1.1 4.2 0"; scale="3 3 3"; side="double"> </a-text>
+            <a-text id="site" value="Site 4"; position = "6.1 4.2 0"; scale="3 3 3";side="double"> </a-text>
             
 
 
             <a-entity
-                  environment="skyType: color; skyColor: #1b2735; groundColor: #FFFFFF; groundTexture: default; ground:flat">
+                  environment="skyType: color; skyColor: black; groundColor: grey; groundTexture: default; ground:flat">
             </a-entity>
 
 

@@ -1,3 +1,6 @@
-#a-text {
-    font-family: Aboreto;
-}
+@font-face {
+    font-family: 'Aboreto';
+    src:  url('/fonts/Aboreto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
