@@ -1,6 +1,69 @@
+<!DOCTYPE>
 <html>
-    <body style="background-color:black;">
-        <h1>Test</h1>
-    </body>
+
+<head>
+
+      <script src="aframe.js"></script>
+
+      <script src="environment.js"></script>
+
+      <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
+
+      <link href="/fonts/Aboreto-Regular.ttf" rel="stylesheet"/>
+      
+
+      <link rel="stylesheet" href="home.css">
+
+</head>
+
+
+<body>
+
+
+
+
+      <a-scene>
+            <a-assets>
+
+                  <img id="my-image" src="/assets/car.jpg" />
+
+                  <a-asset-item id="customFont" src="/fonts/Aboreto-Regular.ttf"></a-asset-item>
+
+            </a-assets>
+
+
+            <a-image src="#my-image" width="3" height="3" position="2 6.5 0"; animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>
+            <a-image src="#my-image" width="3" height="3" position="7 6.5 0"; animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>
+            <a-image src="#my-image" width="3" height="3" position="-3 6.5 0"; animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>
+            <a-image src="#my-image" width="3" height="3" position="-8 6.5 0"; animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>
+
+            <a-entity id="welcome" text="value: Welcome to ExploreX"; font="#customFont"; position = "5.5 7 10"; scale="20 20 20"> </a-entity>
+            <a-entity id="site" text="value: Site 1"; position = "-3.5 4.5 0"; scale="10 10 10"> </a-entity>
+            <a-entity id="site" text="value: Site 2"; position = "1.5 4.5 0"; scale="10 10 10"> </a-entity>
+            <a-entity id="site" text="value: Site 3"; position = "6.5 4.5 0"; scale="10 10 10"> </a-entity>
+            <a-entity id="site" text="value: Site 4"; position = "11.5 4.5 0"; scale="10 10 10"> </a-entity>
+            
+
+
+            <a-entity
+                  environment="skyType: color; skyColor: #1b2735; groundColor: #FFFFFF; groundTexture: default; ground:flat">
+            </a-entity>
+
+
+
+
+
+
+            <a-camera position = "0 4 15.5"; rotation="0 50 0" >
+
+		<a-cursor color= "red"><-cursor>
+
+	</a-camera>
+
+      </a-scene>
+
+
+
+</body>
 
 </html>
