@@ -21,14 +21,16 @@
                   <img id="wall" src="/assets/images/wall.jpeg">
 
                   <a-asset-item id="customFont" src="/fonts/Aboreto-Regular.ttf"></a-asset-item>
-                  <!-- <a-asset-item id="bench" src="" ></a-asset-item> -->
 
-                  <a-asset-item id="bench" src="/assets/models/bench.obj"></a-asset-item>
-                  <a-asset-item id="material" src="/assets/models/model-textures/bench.mtl"></a-asset-item>
+                  <!-- <a-asset-item id="bench" src="/assets/models/bench.obj"></a-asset-item>
+                  <a-asset-item id="material" src="/assets/models/model-textures/bench.mtl"></a-asset-item> -->
+                  <a-asset-item id="bench" src="/assets/models/bench.gltf"></a-asset-item>
 
             </a-assets>
 
-            <a-obj-model src="#bench" mtl="#material" scale="3 3 3" position="43.5 0.5 5"></a-obj-model>
+            <!-- <a-obj-model src="#bench" mtl="#material" scale="3 3 3" position="43.5 0.5 5"></a-obj-model> -->
+
+            <a-entity gltf-model="#bench" position="25 1 -5" rotation="0 90 0" scale="3 3 3"></a-entity>
                 
             <!-- <a-image src="#merc2" width="4" height="4" position="2 8 0";animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1" ></a-image>          
             <a-image src="#ferarri" width="4" height="4" position="7 8 0";animation="property: rotation; to: 0 360 0; dur: 6000; loop: 1"></a-image>           
