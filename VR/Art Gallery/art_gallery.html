@@ -1,15 +1,15 @@
-<script src="/VR/Art Gallery/aframe.js"></script>
+<script src="aframe.js"></script>
 
 <a-scene fog="color: #FF020A;">
 
     <a-assets>
         <!-- Assets -->
-        <img id="backwall" src="/assets/art gallery/backwall.jpeg" />
-        <img id="floor" src="/assets/art gallery/floor.jpeg" />
+        <img id="backwalls" src="/assets/art gallery/backwall.png" />
+        <img id="floor" src="/assets/art gallery/floor.png" />
         <img id="sidewalls" src="/assets/art gallery/sidewalls.avif" />
 
-        <img id="directionalsign" src="/assets/art gallery/directionalsign.jpeg" />
-        <img id="entrancesign" src="/assets/art gallery/entrancesign.png" />
+        <img id="directionalsign" src="/assets/art gallery/directionalarrow.png" />
+        <img id="entrancesign" src="/assets/art gallery/entrance.png" />
         <img id="exitsign" src="/assets/art gallery/exitsign.png" />
         <img id="toiletsign" src="/assets/art gallery/toiletsign.png" />
 
@@ -26,34 +26,30 @@
         <img id="painting6" src="/assets/art gallery/painting6.avif" />
         <img id="painting7" src="/assets/art gallery/painting7.avif" />
         <img id="painting8" src="/assets/art gallery/painting8.avif" />
-        
+
+        <img id="redwood" src="/assets/art gallery/redwood.jpg" />
+
         <!-- Mixins -->
-        <a-mixin id="wall-texture" 
-            material="src: #sidewalls; repeat: 8 8; roughness: 0.5;">
-        </a-mixin>
+        <a-mixin id="s-wall-texture" material="src: #sidewalls; repeat: 8 8; roughness: 0.5;"></a-mixin>
+        <a-mixin id="fb-wall-texture" material="src: #backwalls; roughness: 0.5;"></a-mixin>
 
-        <a-mixin id="wall" mixin="wall-texture" geometry="primitive: plane; width: 10; height: 5"></a-mixin>
-
-        <!-- Gallery walls, floor & ceiling -->
-        <a-plane id="floor" rotation="-90 0 0" width="5" height="10" material="color: silver; src: #floor-base; repeat: 4 8; roughness: 0.3; "></a-plane>
-        <a-entity id="wall-n" mixin="wall" position="0 2.5 -5" geometry="width: 5" material="color: #333"></a-entity>
-        <a-entity id="wall-w" mixin="wall" rotation="0 90 0" position="-2.5 2.5 0"></a-entity>
-        <a-entity id="wall-e" mixin="wall" rotation="0 -90 0" position="2.5 2.5 0"></a-entity>
-        <a-entity id="wall-s" mixin="wall" rotation="0 -180 0" position="0 2.5 5" geometry="width: 5" material="color: #333"></a-entity>
-        <a-plane id="ceiling" rotation="90 0 0" width="5" height="10" position="0 5 0" material="color: #fff; roughness: 1;"></a-plane>
-
-        <!-- Ceiling inset -->
-        <a-box width="4" height="0.5" depth="9" position="0 4.75 0" material="color: #333; src: #concrete-base"></a-box>
-
+        <a-mixin id="s-wall" mixin="s-wall-texture" geometry="primitive: plane; width: 30; height: 10;"></a-mixin>
+        <a-mixin id="fb-wall" mixin="fb-wall-texture" geometry="primitive: plane; width: 30; height: 10"></a-mixin>
     </a-assets>
 
-    <!-- Floor -->
-    <a-plane id="floor"
-        rotation="-90 0 0" width="5" height="10" material="color: silver; src: #floor; repeat: 4 8; roughness: 0.3; ">
-    </a-plane>
+    <!-- Gallery walls, floor & ceiling -->
+    <a-plane id="floor" rotation="-90 0 0" width="30" height="30" material="color: silver; src: #floor; repeat: 10 10; roughness: 0.3; "></a-plane>
+    <a-entity id="wall-f" mixin="fb-wall" rotation="0 0 0" position="0 5 -15"></a-entity>
+    <a-entity id="wall-l" mixin="s-wall" rotation="0 90 0" position="-15 5 0"></a-entity>
+    <a-entity id="wall-r" mixin="s-wall" rotation="0 -90 0" position="15 5 0"></a-entity>
+    <a-entity id="wall-b" mixin="fb-wall" rotation="0 -180 0" position="0 5 15"></a-entity>
+    <a-plane id="ceiling" rotation="90 0 0" width="30" height="30" position="0 10 0" material="roughness: 1;"></a-plane>
+
+    <!-- Ceiling inset -->
+    <a-box width="29" height="0.5" depth="29" position="0 10 0" material="src: #backwalls"></a-box>
 
     <a-camera look-controls wasd-controls="acceleration: 80" position="0 3 20">
-        <a-cursor color="white">
+        <a-cursor color="red">
     </a-camera>
 
 </a-scene>
