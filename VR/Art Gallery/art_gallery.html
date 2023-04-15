@@ -1,0 +1,59 @@
+<script src="/VR/Art Gallery/aframe.js"></script>
+
+<a-scene fog="color: #FF020A;">
+
+    <a-assets>
+        <!-- Assets -->
+        <img id="backwall" src="/assets/art gallery/backwall.jpeg" />
+        <img id="floor" src="/assets/art gallery/floor.jpeg" />
+        <img id="sidewalls" src="/assets/art gallery/sidewalls.avif" />
+
+        <img id="directionalsign" src="/assets/art gallery/directionalsign.jpeg" />
+        <img id="entrancesign" src="/assets/art gallery/entrancesign.png" />
+        <img id="exitsign" src="/assets/art gallery/exitsign.png" />
+        <img id="toiletsign" src="/assets/art gallery/toiletsign.png" />
+
+        <img id="nopetsign" src="/assets/art gallery/nopets.png" />
+        <img id="nophoto" src="/assets/art gallery/nophoto.png" />
+        <img id="nosmoking" src="/assets/art gallery/nosmoking.png" />
+        <img id="notouch" src="/assets/art gallery/notouch.png" />
+
+        <img id="painting1" src="/assets/art gallery/painting1.avif" />
+        <img id="painting2" src="/assets/art gallery/painting2.avif" />
+        <img id="painting3" src="/assets/art gallery/painting3.avif" />
+        <img id="painting4" src="/assets/art gallery/painting4.avif" />
+        <img id="painting5" src="/assets/art gallery/painting5.avif" />
+        <img id="painting6" src="/assets/art gallery/painting6.avif" />
+        <img id="painting7" src="/assets/art gallery/painting7.avif" />
+        <img id="painting8" src="/assets/art gallery/painting8.avif" />
+        
+        <!-- Mixins -->
+        <a-mixin id="wall-texture" 
+            material="src: #sidewalls; repeat: 8 8; roughness: 0.5;">
+        </a-mixin>
+
+        <a-mixin id="wall" mixin="wall-texture" geometry="primitive: plane; width: 10; height: 5"></a-mixin>
+
+        <!-- Gallery walls, floor & ceiling -->
+        <a-plane id="floor" rotation="-90 0 0" width="5" height="10" material="color: silver; src: #floor-base; repeat: 4 8; roughness: 0.3; "></a-plane>
+        <a-entity id="wall-n" mixin="wall" position="0 2.5 -5" geometry="width: 5" material="color: #333"></a-entity>
+        <a-entity id="wall-w" mixin="wall" rotation="0 90 0" position="-2.5 2.5 0"></a-entity>
+        <a-entity id="wall-e" mixin="wall" rotation="0 -90 0" position="2.5 2.5 0"></a-entity>
+        <a-entity id="wall-s" mixin="wall" rotation="0 -180 0" position="0 2.5 5" geometry="width: 5" material="color: #333"></a-entity>
+        <a-plane id="ceiling" rotation="90 0 0" width="5" height="10" position="0 5 0" material="color: #fff; roughness: 1;"></a-plane>
+
+        <!-- Ceiling inset -->
+        <a-box width="4" height="0.5" depth="9" position="0 4.75 0" material="color: #333; src: #concrete-base"></a-box>
+
+    </a-assets>
+
+    <!-- Floor -->
+    <a-plane id="floor"
+        rotation="-90 0 0" width="5" height="10" material="color: silver; src: #floor; repeat: 4 8; roughness: 0.3; ">
+    </a-plane>
+
+    <a-camera look-controls wasd-controls="acceleration: 80" position="0 3 20">
+        <a-cursor color="white">
+    </a-camera>
+
+</a-scene>

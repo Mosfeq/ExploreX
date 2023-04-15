@@ -16,6 +16,9 @@
 
         <a-assets>
             <img id="site1" src="/assets/site1.webp" />
+            <img id="site2" src="/assets/site2.jpg" />
+            <img id="site3" src="/assets/site3.jpg" />
+            <img id="site4" src="/assets/site4.jpg" />
         </a-assets>
 
         <a-entity
@@ -85,44 +88,76 @@
 
         </a-entity>
 
+        <a-entity id="site_2">
 
+            <a-box id="floor" src="/assets/textures/black-stars.jpg" position="0 0 80" scale="16 20 0.05" rotation="90 0 0"></a-box>
 
+            <a-cylinder id="pillar1-section1" src="/assets/textures/pillartexture.webp" scale="0.8 5 0.8" position="5.5 0 88"></a-cylinder>
+            <a-cylinder id="pillar1-section2" src="/assets/textures/pillartexture.webp" scale="0.9 2 0.9" position="5.5 3.5 88"></a-cylinder>
+            <a-cylinder id="pillar1-section3" src="/assets/textures/pillartexture.webp" scale="0.8 2.4 0.8" position="5.5 5.5 88"></a-cylinder>
+            <a-cylinder id="pillar1-section4" src="/assets/textures/pillartexture.webp" scale="1 0.5 1" position="5.5 7 88"></a-cylinder>
+    
+            <a-cylinder id="pillar2-section1" src="/assets/textures/pillartexture.webp" scale="0.8 5 0.8" position="-5.5 0 88"></a-cylinder>
+            <a-cylinder id="pillar2-section2" src="/assets/textures/pillartexture.webp" scale="0.9 2 0.9" position="-5.5 3.5 88"></a-cylinder>
+            <a-cylinder id="pillar2-section3" src="/assets/textures/pillartexture.webp" scale="0.8 2.4 0.8" position="-5.5 5.5 88"></a-cylinder>
+            <a-cylinder id="pillar2-section4" src="/assets/textures/pillartexture.webp" scale="1 0.5 1" position="-5.5 7 88"></a-cylinder>
+    
+            <a-cylinder id="pillar3-section1" src="/assets/textures/pillartexture.webp" scale="0.8 5 0.8" position="-6.5 0 80"></a-cylinder>
+            <a-cylinder id="pillar3-section2" src="/assets/textures/pillartexture.webp" scale="0.9 2 0.9" position="-6.5 3.5 80"></a-cylinder>
+            <a-cylinder id="pillar3-section3" src="/assets/textures/pillartexture.webp" scale="0.8 2.4 0.8" position="-6.5 5.5 80"></a-cylinder>
+            <a-cylinder id="pillar3-section4" src="/assets/textures/pillartexture.webp" scale="1 0.5 1" position="-6.5 7 80"></a-cylinder>
+    
+            <a-cylinder id="pillar4-section1" src="/assets/textures/pillartexture.webp" scale="0.8 5 0.8" position="6.5 0 80"></a-cylinder>
+            <a-cylinder id="pillar4-section2" src="/assets/textures/pillartexture.webp" scale="0.9 2 0.9" position="6.5 3.5 80"></a-cylinder>
+            <a-cylinder id="pillar4-section3" src="/assets/textures/pillartexture.webp" scale="0.8 2.4 0.8" position="6.5 5.5 80"></a-cylinder>
+            <a-cylinder id="pillar4-section4" src="/assets/textures/pillartexture.webp" scale="1 0.5 1" position="6.5 7 80"></a-cylinder>
+    
+            <a-cylinder id="pillar5-section1" src="/assets/textures/pillartexture.webp" scale="0.8 5 0.8" position="6.5 0 72"></a-cylinder>
+            <a-cylinder id="pillar5-section2" src="/assets/textures/pillartexture.webp" scale="0.9 2 0.9" position="6.5 3.5 72"></a-cylinder>
+            <a-cylinder id="pillar5-section3" src="/assets/textures/pillartexture.webp" scale="0.8 2.4 0.8" position="6.5 5.5 72"></a-cylinder>
+            <a-cylinder id="pillar5-section4" src="/assets/textures/pillartexture.webp" scale="1 0.5 1" position="6.5 7 72"></a-cylinder>
+    
+            <a-cylinder id="pillar6-section1" src="/assets/textures/pillartexture.webp" scale="0.8 5 0.8" position="-6.5 0 72"></a-cylinder>
+            <a-cylinder id="pillar6-section2" src="/assets/textures/pillartexture.webp" scale="0.9 2 0.9" position="-6.5 3.5 72"></a-cylinder>
+            <a-cylinder id="pillar6-section3" src="/assets/textures/pillartexture.webp" scale="0.8 2.4 0.8" position="-6.5 5.5 72"></a-cylinder>
+            <a-cylinder id="pillar6-section4" src="/assets/textures/pillartexture.webp" scale="1 0.5 1" position="-6.5 7 72"></a-cylinder>
+    
+            <a-cylinder id="platform-top" scale="4.5 0.2 4.5" position="0 0.2 84"></a-cylinder>
+            <a-cylinder id="platform-bottom" scale="5 0.2 5" position="0 0 84"></a-cylinder>
+            <a-entity id="platform-light2" light="type: point; intensity: 0.8; distance: 15; decay: 1" target="#right-wall2"></a-entity>
+            <a-entity id="platform-light2" light="type: point; intensity: 0.8; distance: 15; decay: 1" target="#left-wall2"></a-entity>  
+            
+            <!-- <a-cylinder id="roof-platform2" src="/assets/textures/white.webp" scale="4.5 0.2 4.5" position="0 8.2 84"></a-cylinder> -->
+            <a-entity id="roof-platform-light-2" light="type: directional; intensity: 1; distance: 10; decay: 0.1" position="0 8.2 84"></a-entity> 
+            
+            <a-link 
+                href="/VR/Home/home.html" 
+                image="#site2"  
+                title="Site 2"
+                on="click" 
+                side="double" 
+                position="0 3.3 83.8" 
+                scale="2 2 0.1">
+            </a-link>     
+    
+            <a-box id="below-roof" scale="14.5 18.5 0.2" position="0 8.4 80.1" color="white" rotation="90 0 0"></a-box>
+    
+            <a-box id="back-wall2" src="/assets/textures/black-stars.jpg"  scale="16 17 0.05" position="0 0 90" src="/assets/textures/floor1.jpg"></a-box>
+            <a-box id="right-wall2" src="/assets/textures/black-stars.jpg" scale="20 17 0.05" position="8 0 80" color="white" rotation="0 90 0"></a-box>
+            <a-box id="left-wall2" src="/assets/textures/black-stars.jpg" scale="20 17 0.05" position="-8 0 80" color="white" rotation="0 90 0"></a-box>
+            <a-box id="roof-wall2" src="/assets/textures/black-stars.jpg" scale="16 20 0.05" position="0 8.5 80" color="white" rotation="90 0 0"></a-box>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+        </a-entity>
 
         <a-camera look-controls
             wasd-controls="acceleration: 80"
-            position="0 3 20">
+            position="0 3 40">
 
             <a-cursor color= "white">  
         </a-camera> 
 
     </a-scene>
-
-
-
+    <!-- animation="property: rotation; to: 0 360 0; dur: 6000; loop: 20" -->
 </body>
 
 </html>
