@@ -1,4 +1,5 @@
 <script src="aframe.js"></script>
+<link rel="stylesheet" href="art_gallery.css">
 
 <a-scene fog="color: #FF020A;">
 
@@ -10,7 +11,7 @@
 
         <img id="directionalsign" src="/assets/art gallery/directionalarrow.png" />
         <img id="entrancesign" src="/assets/art gallery/entrance.png" />
-        <img id="exitsign" src="/assets/art gallery/exitsign.png" />
+        <img id="exitsign" src="/assets/art gallery/exit.png" />
         <img id="toiletsign" src="/assets/art gallery/toiletsign.png" />
 
         <img id="nopetsign" src="/assets/art gallery/nopets.png" />
@@ -34,22 +35,116 @@
         <a-mixin id="fb-wall-texture" material="src: #backwalls; roughness: 0.5;"></a-mixin>
 
         <a-mixin id="s-wall" mixin="s-wall-texture" geometry="primitive: plane; width: 30; height: 10;"></a-mixin>
-        <a-mixin id="fb-wall" mixin="fb-wall-texture" geometry="primitive: plane; width: 30; height: 10"></a-mixin>
+        <a-mixin id="fb-wall" mixin="fb-wall-texture" geometry="primitive: plane; width: 38; height: 10"></a-mixin>
+
+        <a-mixin id="s1-wall" mixin="s-wall-texture" geometry="primitive: box; width: 30; height: 10; depth: 0.5"></a-mixin>
     </a-assets>
 
     <!-- Gallery walls, floor & ceiling -->
-    <a-plane id="floor" rotation="-90 0 0" width="30" height="30" material="color: silver; src: #floor; repeat: 10 10; roughness: 0.3; "></a-plane>
-    <a-entity id="wall-f" mixin="fb-wall" rotation="0 0 0" position="0 5 -15"></a-entity>
-    <a-entity id="wall-l" mixin="s-wall" rotation="0 90 0" position="-15 5 0"></a-entity>
-    <a-entity id="wall-r" mixin="s-wall" rotation="0 -90 0" position="15 5 0"></a-entity>
-    <a-entity id="wall-b" mixin="fb-wall" rotation="0 -180 0" position="0 5 15"></a-entity>
-    <a-plane id="ceiling" rotation="90 0 0" width="30" height="30" position="0 10 0" material="roughness: 1;"></a-plane>
+    <a-plane id="floor" rotation="-90 0 0" width="38" height="30" material="color: silver; src: #floor; repeat: 10 10; roughness: 0.3; "></a-plane>
+    <a-entity id="wall-l" mixin="s-wall" rotation="0 90 0" position="-19 5 0"></a-entity>
+    <a-entity id="wall-r" mixin="s-wall" rotation="0 -90 0" position="19 5 0"></a-entity>
+    <a-plane id="ceiling" rotation="90 0 0" width="38" height="30" position="0 10 0" material="roughness: 1;"></a-plane>
+
+    <!-- Middle Right Walls -->
+    <a-entity id="wall-r2" mixin="s1-wall" rotation="0 -90 0" position="5 8 0" geometry="height:4"></a-entity>
+    <a-entity id="wall-r3" mixin="s1-wall" rotation="0 -90 0" position="5 3 8.5" geometry="width: 13; height:6"></a-entity>
+    <a-entity id="wall-r4" mixin="s1-wall" rotation="0 -90 0" position="5 3 -8.5" geometry="width: 13; height:6"></a-entity>
+
+    <!-- Middle Left Walls -->
+    <a-entity id="wall-l2" mixin="s1-wall" rotation="0 -90 0" position="-5 8 0" geometry="height:4"></a-entity>
+    <a-entity id="wall-l3" mixin="s1-wall" rotation="0 -90 0" position="-5 3 8.5" geometry="width: 13; height:6"></a-entity>
+    <a-entity id="wall-l4" mixin="s1-wall" rotation="0 -90 0" position="-5 3 -8.5" geometry="width: 13; height:6"></a-entity>
 
     <!-- Ceiling inset -->
-    <a-box width="29" height="0.5" depth="29" position="0 10 0" material="src: #backwalls"></a-box>
+    <a-box width="37" height="0.5" depth="29" position="0 10 0" material="src: #backwalls"></a-box>
+
+    <!-- Entrance and Exit -->
+    <a-entity id="wall-f1" mixin="fb-wall" rotation="0 -180 0" position="0 8 15" geometry="height:4"></a-entity>
+    <a-entity id="wall-f2" mixin="fb-wall" rotation="0 -180 0" position="-10.5 3 15" geometry="width: 17; height:6"></a-entity>
+    <a-entity id="wall-f3" mixin="fb-wall" rotation="0 -180 0" position="10.5 3 15" geometry="width: 17; height:6"></a-entity>
+
+    <a-box id="entrance-sign" width="4.5" height="1.5" depth="0." position="0 7.5 14.7" src= #entrancesign ></a-box>
+
+    <a-entity id="door" position="5 3 0" rotation="0 -90 0" hinge>
+        <a-box width="4" height="6" depth="0.5" color="#774c32"></a-box>
+        <a-box id="hinge" position="1.5 0 0" width="0.5" height="0.5" depth="0.6" color="#ff0000"
+            onclick="toggleDoor()">
+        </a-box>
+    </a-entity>
+
+    <a-entity id="wall-b1" mixin="fb-wall" rotation="0 0 0" position="0 8 -15" geometry="height:4"></a-entity>
+    <a-entity id="wall-b2" mixin="fb-wall" rotation="0 0 0" position="-10.5 3 -15" geometry="width: 17; height:6"></a-entity>
+    <a-entity id="wall-b3" mixin="fb-wall" rotation="0 0 0" position="10.5 3 -15" geometry="width: 17; height:6"></a-entity>
+
+    <a-box id="exit-sign" width="4.5" height="1.5" depth="0.3" position="0 7.5 -14.7" src= #exitsign ></a-box>
+
+    <a-entity id="door1" position="-5 3 0" rotation="0 -90 0" hinge>
+        <a-box width="4" height="6" depth="0.5" color="#774c32"></a-box>
+        <a-box id="hinge" position="1.5 0 0" width="0.5" height="0.5" depth="0.6" color="#ff0000"
+            onclick="toggleDoor2()">
+        </a-box>
+    </a-entity>
+
 
     <a-camera look-controls wasd-controls="acceleration: 80" position="0 3 20">
         <a-cursor color="red">
     </a-camera>
 
 </a-scene>
+
+<script>
+    function toggleDoor() {
+        // Get the door entity and its current position
+        var door = document.querySelector('#door');
+        var doorPosition = door.getAttribute('position');
+        var doorRotation = door.getAttribute('rotation');
+    
+        // Define the original and new positions of the door
+        var originalPosition = '5 3 0';
+        var newPosition = '3 3 -2';
+        var originalRotation = '0 -90 0';
+        var newRotation = '0 -180 0';
+    
+        // Check if the current position is the original position or the new position
+        if (doorPosition.x == originalPosition.split(' ')[0] && 
+            doorPosition.y == originalPosition.split(' ')[1] && 
+            doorPosition.z == originalPosition.split(' ')[2] &&
+            doorRotation.x == originalRotation.split(' ')[0] &&
+            doorRotation.y == originalRotation.split(' ')[1] &&
+            doorRotation.z == originalRotation.split(' ')[2]) {
+
+            door.setAttribute('position', newPosition);
+            door.setAttribute('rotation', newRotation);
+        } else {
+            door.setAttribute('position', originalPosition);
+            door.setAttribute('rotation', originalRotation);
+        }
+    }
+
+    function toggleDoor2(){
+        var door1 = document.querySelector('#door1');
+        var door1Position = door1.getAttribute('position');
+        var door1Rotation = door1.getAttribute('rotation');
+
+        var originalPosition1 = '-5 3 0';
+        var newPosition1 = '-3 3 -2';
+        var originalRotation1 = '0 -90 0';
+        var newRotation1 = '0 -180 180';
+
+        if (door1Position.x == originalPosition1.split(' ')[0] && 
+            door1Position.y == originalPosition1.split(' ')[1] && 
+            door1Position.z == originalPosition1.split(' ')[2] &&
+            door1Rotation.x == originalRotation1.split(' ')[0] &&
+            door1Rotation.y == originalRotation1.split(' ')[1] &&
+            door1Rotation.z == originalRotation1.split(' ')[2]) {
+
+            door1.setAttribute('position', newPosition1);
+            door1.setAttribute('rotation', newRotation1);
+        } else {
+            door1.setAttribute('position', originalPosition1);
+            door1.setAttribute('rotation', originalRotation1);
+        }
+    }
+
+</script>
