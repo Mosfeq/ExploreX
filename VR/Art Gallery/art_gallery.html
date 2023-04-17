@@ -2,6 +2,7 @@
 <script>
     console.clear()
     window.addEventListener('click', () => document.querySelector('#fire').play());
+    window.addEventListener('click', () => document.querySelector('#clock=texture').play());
 </script>
 
 <a-scene>
@@ -13,13 +14,14 @@
         <img id="sidewalls" src="/assets/art gallery/sidewalls.avif" />
 
         <video id="fire" src="/assets/art gallery/fireplace.mov" autoplay loop></video>
+        <img id="clock-texture" src="/assets/art gallery/square-clock.jpeg" />
 
         <img id="doorTexture" src="/assets/art gallery/texture/door.png" />
         <img id="doorTexture2" src="/assets/art gallery/texture/door2.png" />
 
         <img id="directionalsign" src="/assets/art gallery/directionalarrow.png" />
-        <img id="entrancesign" src="/assets/art gallery/entrance.png" />
-        <img id="exitsign" src="/assets/art gallery/exit.png" />
+        <img id="entrancesign" src="/assets/art gallery/entrance1.png" />
+        <img id="exitsign" src="/assets/art gallery/exit1.png" />
         <img id="toiletsign" src="/assets/art gallery/toiletsign.png" />
 
         <img id="nopetsign" src="/assets/art gallery/nopets.png" />
@@ -37,6 +39,11 @@
         <img id="painting8" src="/assets/art gallery/painting8.avif" />
 
         <img id="redwood" src="/assets/art gallery/redwood.jpg" />
+
+        <img id="site1" src="/assets/site1.webp" />
+        <img id="site2" src="/assets/site2.jpg" />
+        <img id="site3" src="/assets/site3.jpg" />
+        <img id="site4" src="/assets/site4.jpg" />
 
         <!-- Models -->
         <a-asset-item id="bench" src="/assets/models/bench.gltf"></a-asset-item>
@@ -82,7 +89,7 @@
     <a-box id="entrance-sign" width="4.5" height="1.5" depth="0." position="0 7.5 14.7" src= #entrancesign ></a-box>
 
     <a-box id="door" position="5 3 0" rotation="0 -90 0" width="4" height="6" depth="0.5" src= #doorTexture2> </a-box>
-    <a-box id="hinge" position="5 3.5 2.5" width="0.8" height="0.5" depth="0.5" color="#c6ccdb"
+    <a-box id="hinge" position="5 3.5 2.5" width="0.8" height="0.5" depth="0.5" color="black"
         onclick="toggleDoor()">
     </a-box>
 
@@ -95,7 +102,7 @@
     <a-box id="exit-sign" width="4.5" height="1.5" depth="0.3" position="0 7.5 -14.7" src= #exitsign ></a-box>
 
     <a-box id="door1" position="-5 3 0" rotation="0 -90 0" width="4" height="6" depth="0.5" src= #doorTexture2></a-box>
-    <a-box id="hinge1" position="-5 3.5 -2.5" width="0.8" height="0.5" depth="0.5" color="#c6ccdb"
+    <a-box id="hinge1" position="-5 3.5 -2.5" width="0.8" height="0.5" depth="0.5" color="black"
         onclick="toggleDoor2()">
     </a-box>
 
@@ -191,18 +198,18 @@
     <a-entity id="bench-right" gltf-model="#bench" position="6 0 8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
     <a-entity id="bench-left" gltf-model="#bench" position="6 0 -8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
 
+    <a-box id="clock" position="5.3 8 0" width="2.5" height="2.5" depth="0.2" rotation="0 90 0" src= #clock-texture></a-box>
+
     <a-box id="middle-left-painting" width="5" height="8.5" depth="0.1" position="19 5 -10" rotation="0 90 0" src= #painting1></a-box>
     <a-box id="middle-right-painting" width="8" height="6.5" depth="0.1" position="19 5 10.5" rotation="0 90 0" src= #painting2></a-box>
     <a-box id="left-painting" width="10" height="6" depth="0.1" position="12 5 -15" rotation="0 180 0" src= #painting3></a-box>
-    <!-- <a-box id="middle-right" width="8" height="6.5" depth="0.1" position="19 5 10.5" rotation="0 90 0" src= #painting2></a-box> -->
-
-    <!-- <a-cylinder radius="0.1" segments-radial="6" height="0.4" material="color: #111; metalness: 0.7; roughness: 0.; side: double" open-ended="true" position="0 4.1 -2" rotation="40s 0 0">
-        <a-entity light="type: spot; angle: 24; intensity: 0.4; penumbra: 0.6; target: #pic-n" position="0 -0.2 0"></a-entity>
-        <a-cylinder radius="0.08" segments-radial="6" height="0.1" material="color: #fff; emissive: #fff; emissiveIntensity: 3" position="0 -0.16 0" rotation="0 0 0"></a-cylinder>
-        <a-cone segments-radial="12" radius-bottom="0.6" radius-top="0.08" position="0 -0.7 0" open-ended="true" material="shader: flat; fog: false; opacity: 0.4; flatShading: true; color: #fff; side: double; transparent: true; blending: additive; depthWrite: false" alpha-map="src: #light-alpha"></a-cone>
-    </a-cylinder> -->
+    <a-box id="right-painting" width="6" height="8" depth="0.1" position="12 5 15" rotation="0 0 0" src= #painting4></a-box>
 
     <!-- <a-plane id="window" position="12.5 9 0" rotation="90 0 0" width="9" height="9" material="transparent: true; opacity: 0.7; color:white side: double"></a-plane> -->
+
+    <a-entity position="15 3 -10">
+        <a-link class="link" href="/VR/Site1/site1.html" rotation="0 -45 0" title="Go to site2" side="double" image= #site3 scale="2 2 2"></a-link>
+    </a-entity>
 
 
 
