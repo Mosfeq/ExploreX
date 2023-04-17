@@ -160,6 +160,7 @@
     <a-box id="fireplace-border-right" width="0.1" height="3.7" depth="0.5" position="-19 3 3.3" material="color: white;" rotation="0 -90 0"></a-box>
     <a-box id="fireplace-border-top" width="6.7" height="0.1" depth="0.5" position="-19 4.8 0" material="color: white;" rotation="0 90 0"></a-box>
     <a-box id="fireplace-border-bottom" width="6.7" height="0.1" depth="0.5" position="-19 1.2 0" material="color: white;" rotation="0 90 0"></a-box>
+
     <a-box id="fireplace" width="6.5" height="3.5" depth="0.5" position="-19 3 0" material="color: #000;" rotation="0 90 0">
         <a-video src= #fire position="0 0 0.255" width="5.2" height="2.1">
             <!-- <a-entity light="type: point; color: #f70; intensity: 1; distance: 1" position="-20 4.5 -4.5"></a-entity>
@@ -172,15 +173,17 @@
     <a-entity id="bench-left" gltf-model="#bench" position="-6 0 -8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
 
     <!-- Site 3 & Site  4-->
-    <a-box id="fireplace-border-left" width="0.1" height="3.7" depth="0.5" position="19 3 -3.3" material="color: white;" rotation="0 -90 0"></a-box>
-    <a-box id="fireplace-border-right" width="0.1" height="3.7" depth="0.5" position="19 3 3.3" material="color: white;" rotation="0 -90 0"></a-box>
-    <a-box id="fireplace-border-top" width="6.7" height="0.1" depth="0.5" position="19 4.8 0" material="color: white;" rotation="0 90 0"></a-box>
-    <a-box id="fireplace-border-bottom" width="6.7" height="0.1" depth="0.5" position="19 1.2 0" material="color: white;" rotation="0 90 0"></a-box>
-    <a-box id="fireplace" width="6.5" height="3.5" depth="0.5" position="19 3 0" material="color: #000;" rotation="0 -90 0">
-        <a-video src= #fire position="0 0 0.255" width="5.2" height="2.1">
-            <!-- <a-entity light="type: point; color: #f70; intensity: 1; distance: 1" position="-20 4.5 -4.5"></a-entity>
-            <a-entity light="type: point; color: #f70; intensity: 1; distance: 2" position="0 -0.5 0.5"></a-entity>
-            <a-entity light="type: point; color: #f70; intensity: 1; distance: 1" position="1 -0.5 0.5"></a-entity> -->
+    <a-box id="fireplace-border-left" width="0.1" height="3.7" depth="0.5" position="19 3 -4.3" material="color: white;" rotation="0 -90 0"></a-box>
+    <a-box id="fireplace-border-right" width="0.1" height="3.7" depth="0.5" position="19 3 4.3" material="color: white;" rotation="0 -90 0"></a-box>
+    <a-box id="fireplace-border-top" width="8.7" height="0.1" depth="0.5" position="19 4.8 0" material="color: white;" rotation="0 90 0"></a-box>
+    <a-box id="fireplace-border-bottom" width="8.7" height="0.1" depth="0.5" position="19 1.2 0" material="color: white;" rotation="0 90 0"></a-box>
+
+    <a-box id="fireplace" width="8.5" height="3.5" depth="0.5" position="19 3 0" material="color: #000;" rotation="0 -90 0">
+        <a-video src= #fire position="0 0 0.255" width="7.4" height="2.4">
+            <!-- <a-entity light="type: point; color: #f70; intensity: 1; distance: 1" position="-2.5 -2.5 2"></a-entity>
+            <a-entity light="type: point; color: #ff7700; intensity: 1; distance: 2" position="0 -2.5 2"></a-entity>
+            <a-entity light="type: point; color: #f70; intensity: 1; distance: 1" position="2.5 -2.5 2"></a-entity> -->
+            <a-entity id="main-light" light="type: point; color: #ff7700; intensity: 4; distance: 6" position="0 0 0"></a-entity>
         </a-video>
     </a-box>
     
