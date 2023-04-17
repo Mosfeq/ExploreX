@@ -4,7 +4,7 @@
     window.addEventListener('click', () => document.querySelector('#fire').play());
 </script>
 
-<a-scene fog="color: #FF020A;">
+<a-scene>
 
     <a-assets>
         <!-- Assets -->
@@ -153,7 +153,7 @@
         <a-entity mixin="abslight" position="0 -1.75 0" rotation="70 90 120"></a-entity>
         <a-entity mixin="abslight" position="0 -1 0" rotation="20 60 110"></a-entity>
     </a-entity>
-    
+
 
     <!-- Site 1 & Site 2 -->
     <a-box id="fireplace-border-left" width="0.1" height="3.7" depth="0.5" position="-19 3 -3.3" material="color: white;" rotation="0 -90 0"></a-box>
@@ -172,6 +172,7 @@
     <a-entity id="bench-right" gltf-model="#bench" position="-6 0 8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
     <a-entity id="bench-left" gltf-model="#bench" position="-6 0 -8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
 
+
     <!-- Site 3 & Site  4-->
     <a-box id="fireplace-border-left" width="0.1" height="3.7" depth="0.5" position="19 3 -4.3" material="color: white;" rotation="0 -90 0"></a-box>
     <a-box id="fireplace-border-right" width="0.1" height="3.7" depth="0.5" position="19 3 4.3" material="color: white;" rotation="0 -90 0"></a-box>
@@ -189,6 +190,20 @@
     
     <a-entity id="bench-right" gltf-model="#bench" position="6 0 8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
     <a-entity id="bench-left" gltf-model="#bench" position="6 0 -8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
+
+    <a-box id="middle-left-painting" width="5" height="8.5" depth="0.1" position="19 5 -10" rotation="0 90 0" src= #painting1></a-box>
+    <a-box id="middle-right-painting" width="8" height="6.5" depth="0.1" position="19 5 10.5" rotation="0 90 0" src= #painting2></a-box>
+    <a-box id="left-painting" width="10" height="6" depth="0.1" position="12 5 -15" rotation="0 180 0" src= #painting3></a-box>
+    <!-- <a-box id="middle-right" width="8" height="6.5" depth="0.1" position="19 5 10.5" rotation="0 90 0" src= #painting2></a-box> -->
+
+    <!-- <a-cylinder radius="0.1" segments-radial="6" height="0.4" material="color: #111; metalness: 0.7; roughness: 0.; side: double" open-ended="true" position="0 4.1 -2" rotation="40s 0 0">
+        <a-entity light="type: spot; angle: 24; intensity: 0.4; penumbra: 0.6; target: #pic-n" position="0 -0.2 0"></a-entity>
+        <a-cylinder radius="0.08" segments-radial="6" height="0.1" material="color: #fff; emissive: #fff; emissiveIntensity: 3" position="0 -0.16 0" rotation="0 0 0"></a-cylinder>
+        <a-cone segments-radial="12" radius-bottom="0.6" radius-top="0.08" position="0 -0.7 0" open-ended="true" material="shader: flat; fog: false; opacity: 0.4; flatShading: true; color: #fff; side: double; transparent: true; blending: additive; depthWrite: false" alpha-map="src: #light-alpha"></a-cone>
+    </a-cylinder> -->
+
+    <!-- <a-plane id="window" position="12.5 9 0" rotation="90 0 0" width="9" height="9" material="transparent: true; opacity: 0.7; color:white side: double"></a-plane> -->
+
 
 
     <a-camera look-controls wasd-controls="acceleration: 80" position="0 3 12">
