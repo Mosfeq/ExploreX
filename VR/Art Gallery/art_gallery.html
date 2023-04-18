@@ -2,7 +2,7 @@
 <script>
     console.clear()
     window.addEventListener('click', () => document.querySelector('#fire').play());
-    window.addEventListener('click', () => document.querySelector('#clock=texture').play());
+    window.addEventListener('click', () => document.querySelector('#fire2').play());
 </script>
 
 <a-scene>
@@ -14,20 +14,24 @@
         <img id="sidewalls" src="/assets/art gallery/sidewalls.avif" />
 
         <video id="fire" src="/assets/art gallery/fireplace.mov" autoplay loop></video>
-        <img id="clock-texture" src="/assets/art gallery/square-clock.jpeg" />
+        <video id="fire2" src="/assets/art gallery/Fire_Wall_1.mp4" autoplay loop></video>
 
+        <img id="clock-texture" src="/assets/art gallery/square-clock.jpeg" />
+        <img id="clock-texture2" src="/assets/art gallery/square-clock2.webp" />
         <img id="doorTexture" src="/assets/art gallery/texture/door.png" />
         <img id="doorTexture2" src="/assets/art gallery/texture/door2.png" />
+        <img id="banner" src="/assets/art gallery/banner.png" />
 
         <img id="directionalsign" src="/assets/art gallery/directionalarrow.png" />
         <img id="entrancesign" src="/assets/art gallery/entrance1.png" />
         <img id="exitsign" src="/assets/art gallery/exit1.png" />
         <img id="toiletsign" src="/assets/art gallery/toiletsign.png" />
-
         <img id="nopetsign" src="/assets/art gallery/nopets.png" />
         <img id="nophoto" src="/assets/art gallery/nophoto.png" />
         <img id="nosmoking" src="/assets/art gallery/nosmoking.png" />
         <img id="notouch" src="/assets/art gallery/notouch.png" />
+        <img id="site1_2" src="/assets/art gallery/Site1+2.png" />
+        <img id="site3_4" src="/assets/art gallery/Site3+4.png" />
 
         <img id="painting1" src="/assets/art gallery/painting1.avif" />
         <img id="painting2" src="/assets/art gallery/painting2.avif" />
@@ -47,6 +51,7 @@
 
         <!-- Models -->
         <a-asset-item id="bench" src="/assets/models/bench.gltf"></a-asset-item>
+        <a-asset-item id="cactus" src="/assets/models/Cactus.gltf"></a-asset-item>
 
         <!-- Mixins -->
         <a-mixin id="s-wall-texture" material="src: #sidewalls; repeat: 8 8; roughness: 0.5;"></a-mixin>
@@ -163,21 +168,33 @@
 
 
     <!-- Site 1 & Site 2 -->
-    <a-box id="fireplace-border-left" width="0.1" height="3.7" depth="0.5" position="-19 3 -3.3" material="color: white;" rotation="0 -90 0"></a-box>
-    <a-box id="fireplace-border-right" width="0.1" height="3.7" depth="0.5" position="-19 3 3.3" material="color: white;" rotation="0 -90 0"></a-box>
-    <a-box id="fireplace-border-top" width="6.7" height="0.1" depth="0.5" position="-19 4.8 0" material="color: white;" rotation="0 90 0"></a-box>
-    <a-box id="fireplace-border-bottom" width="6.7" height="0.1" depth="0.5" position="-19 1.2 0" material="color: white;" rotation="0 90 0"></a-box>
+    <a-box id="fireplace-border-left" width="0.1" height="3.7" depth="0.5" position="-19 3 -4.3" material="color: white;" rotation="0 -90 0"></a-box>
+    <a-box id="fireplace-border-right" width="0.1" height="3.7" depth="0.5" position="-19 3 4.3" material="color: white;" rotation="0 -90 0"></a-box>
+    <a-box id="fireplace-border-top" width="8.7" height="0.1" depth="0.5" position="-19 4.8 0" material="color: white;" rotation="0 90 0"></a-box>
+    <a-box id="fireplace-border-bottom" width="8.7" height="0.1" depth="0.5" position="-19 1.2 0" material="color: white;" rotation="0 90 0"></a-box>
 
-    <a-box id="fireplace" width="6.5" height="3.5" depth="0.5" position="-19 3 0" material="color: #000;" rotation="0 90 0">
-        <a-video src= #fire position="0 0 0.255" width="5.2" height="2.1">
-            <!-- <a-entity light="type: point; color: #f70; intensity: 1; distance: 1" position="-20 4.5 -4.5"></a-entity>
-            <a-entity light="type: point; color: #f70; intensity: 1; distance: 2" position="0 -0.5 0.5"></a-entity>
-            <a-entity light="type: point; color: #f70; intensity: 1; distance: 1" position="1 -0.5 0.5"></a-entity> -->
+    <a-box id="fireplace-left" width="8.5" height="3.5" depth="0.5" position="-19 3 0" material="color: #000;" rotation="0 90 0">
+        <a-video src= #fire2 position="0 0 0.255" width="7.4" height="2.4">
+            <a-entity id="main-light" light="type: point; color: #ff7700; intensity: 4; distance: 6" position="0 0 0"></a-entity>
         </a-video>
     </a-box>
 
     <a-entity id="bench-right" gltf-model="#bench" position="-6 0 8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
     <a-entity id="bench-left" gltf-model="#bench" position="-6 0 -8.5" rotation="0 0 0" scale="1.2 1.7 1.2"></a-entity>
+
+    <a-box id="clock" position="-5.3 8 0" width="2.5" height="2.5" depth="0.2" rotation="0 90 0" src= #clock-texture2></a-box>
+
+    <a-box id="middle-left-painting" width="5" height="8.5" depth="0.1" position="-19 5 -10" rotation="0 90 0" src= #painting5></a-box>
+    <a-box id="painting5-info" width="1.2" height="1.2" depth="0.1" position="-19 5 -6.7" rotation="0 90 0"></a-box>
+
+    <a-box id="middle-right-painting" width="8" height="6.5" depth="0.1" position="-19 5 10.5" rotation="0 90 0" src= #painting6></a-box>
+    <a-box id="painting6-info" width="1.2" height="1.2" depth="0.1" position="-19 5 5.7" rotation="0 90 0"></a-box>
+
+    <a-box id="left-painting" width="10" height="6" depth="0.1" position="-11.5 5 -15" rotation="0 180 0" src= #painting7></a-box>
+    <a-box id="painting7-info" width="1.2" height="1.2" depth="0.1" position="-17.3 5 -15" rotation="0 180 0"></a-box>
+    
+    <a-box id="right-painting" width="6" height="8" depth="0.1" position="-12 5 15" src= #painting8></a-box>
+    <a-box id="painting8-info" width="1.2" height="1.2" depth="0.1" position="-15.8 5 15"></a-box>
 
 
     <!-- Site 3 & Site  4-->
@@ -186,7 +203,7 @@
     <a-box id="fireplace-border-top" width="8.7" height="0.1" depth="0.5" position="19 4.8 0" material="color: white;" rotation="0 90 0"></a-box>
     <a-box id="fireplace-border-bottom" width="8.7" height="0.1" depth="0.5" position="19 1.2 0" material="color: white;" rotation="0 90 0"></a-box>
 
-    <a-box id="fireplace" width="8.5" height="3.5" depth="0.5" position="19 3 0" material="color: #000;" rotation="0 -90 0">
+    <a-box id="fireplace-right" width="8.5" height="3.5" depth="0.5" position="19 3 0" material="color: #000;" rotation="0 -90 0">
         <a-video src= #fire position="0 0 0.255" width="7.4" height="2.4">
             <!-- <a-entity light="type: point; color: #f70; intensity: 1; distance: 1" position="-2.5 -2.5 2"></a-entity>
             <a-entity light="type: point; color: #ff7700; intensity: 1; distance: 2" position="0 -2.5 2"></a-entity>
@@ -201,17 +218,31 @@
     <a-box id="clock" position="5.3 8 0" width="2.5" height="2.5" depth="0.2" rotation="0 90 0" src= #clock-texture></a-box>
 
     <a-box id="middle-left-painting" width="5" height="8.5" depth="0.1" position="19 5 -10" rotation="0 90 0" src= #painting1></a-box>
+    <a-box id="painting1-info" width="1.2" height="1.2" depth="0.1" position="19 5 -6.7" rotation="0 90 0"></a-box>
+
     <a-box id="middle-right-painting" width="8" height="6.5" depth="0.1" position="19 5 10.5" rotation="0 90 0" src= #painting2></a-box>
-    <a-box id="left-painting" width="10" height="6" depth="0.1" position="12 5 -15" rotation="0 180 0" src= #painting3></a-box>
-    <a-box id="right-painting" width="6" height="8" depth="0.1" position="12 5 15" rotation="0 0 0" src= #painting4></a-box>
+    <a-box id="painting2-info" width="1.2" height="1.2" depth="0.1" position="19 5 5.7" rotation="0 90 0"></a-box>
+
+    <a-box id="left-painting" width="10" height="6" depth="0.1" position="11.5 5 -15" rotation="0 180 0" src= #painting3></a-box>
+    <a-box id="painting3-info" width="1.2" height="1.2" depth="0.1" position="17.3 5 -15" rotation="0 180 0"></a-box>
+    
+    <a-box id="right-painting" width="6" height="8" depth="0.1" position="12 5 15" src= #painting4></a-box>
+    <a-box id="painting4-info" width="1.2" height="1.2" depth="0.1" position="15.8 5 15"></a-box>
 
     <!-- <a-plane id="window" position="12.5 9 0" rotation="90 0 0" width="9" height="9" material="transparent: true; opacity: 0.7; color:white side: double"></a-plane> -->
 
-    <a-entity position="15 3 -10">
+    <!-- <a-entity position="15 3 -10">
         <a-link class="link" href="/VR/Site1/site1.html" rotation="0 -45 0" title="Go to site2" side="double" image= #site3 scale="2 2 2"></a-link>
-    </a-entity>
+    </a-entity> -->
 
 
+    <!-- Corridor -->
+    <!-- <a-entity id="cactus" gltf-model="#cactus" position="0 2 0" scale="5 5 5"></a-entity> -->
+    <a-box id="banner" width="2.5" height="6" depth="0.1" position="-3 2.1 9.5" rotation="0 55 0" src= #banner></a-box>
+    <a-sphere id="banner-bottom" scale="1.8 0.3 1" position="-3 0 9.5" rotation="0 55 0"></a-sphere>
+
+    <a-box id="site1_2-sign" width="4" height="2" depth="0.1" position="-4.7 7.5 0" rotation="0 90 0" src= #site1_2 ></a-box>
+    <a-box id="site3_4-sign" width="4" height="2" depth="0.1" position="4.7 7.5 0" rotation="0 90 0" src= #site3_4 ></a-box>
 
     <a-camera look-controls wasd-controls="acceleration: 80" position="0 3 12">
         <a-cursor color="green">
