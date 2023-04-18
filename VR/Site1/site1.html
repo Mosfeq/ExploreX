@@ -1,0 +1,79 @@
+<script src="aframe.js"></script>
+
+<a-scene>
+    <a-assets>
+        <img id="image1" src="/assets/360/su.jpg">
+        <img id="image2" src="/assets/360/su2.jpg">
+        <img id="image3" src="/assets/360/random.jpg">
+    </a-assets>
+
+    <!-- set up your camera and controls with a red cursor -->
+    <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
+        <a-entity geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: red; shader: flat;" position="0 0 -1"></a-entity>
+    </a-entity>
+
+    <!-- your first 360 image -->
+    <a-sky id="sky1" src="#image1" visible="true"></a-sky>
+        
+        <!-- your second 360 image, hidden by default -->
+        <a-sky id="sky2" src="#image2" visible="false"></a-sky>
+        <a-sky id="sky3" src="#image3" visible="false"></a-sky>
+
+        <!-- your buttons to switch images -->
+        <a-entity id="prevButton" geometry="primitive: plane; width: 1; height: 0.5;" material="color: blue;" 
+            position="-1.5 -1 -3" text="value: Previous Image; align: center;" 
+            onclick="switchToPrevImage()">
+        </a-entity>
+
+        <a-entity id="nextButton" class="button" a-rounded="radius: 0.2; height: 0.05; width: 0.2; color: #1c1c1c" 
+            geometry="primitive: plane; width: 1; height: 0.5;" material="color: blue;" position="1.5 -1 -3" text="value: Next Image; align: center;"              
+            onclick="switchToNextImage()">
+        </a-entity>
+
+</a-scene>
+
+<script>
+
+    function switchToNextImage() {
+        
+        var sky1 = document.getElementById("sky1");
+        var sky2 = document.getElementById("sky2");
+        var sky3 = document.getElementById("sky3");
+        
+        if (sky1.getAttribute("visible")) {
+            sky1.setAttribute("visible", false);
+            sky2.setAttribute("visible", true);
+            sky3.setAttribute("visible", true);
+    
+        }if (sky2.getAttribute("visible")) {
+            sky1.setAttribute("visible", false);
+            sky2.setAttribute("visible", true);
+            sky3.setAttribute("visible", true);
+            
+        } else{
+            sky1.setAttribute("visible", true);
+            sky2.setAttribute("visible", false);
+            sky3.setAttribute("visible", false);
+        }
+    
+    }
+    
+    function switchToPrevImage() {
+        
+        var sky1 = document.getElementById("sky1");
+        var sky2 = document.getElementById("sky2");
+        var sky3 = document.getElementById("sky3");
+        
+        if (sky1.getAttribute("visible")) {
+            sky1.setAttribute("visible", false);
+            sky2.setAttribute("visible", true);
+            sky3.setAttribute("visible", true);
+        } else {
+            sky1.setAttribute("visible", true);
+            sky2.setAttribute("visible", false);
+            sky3.setAttribute("visible", false);
+        }
+    
+    }
+
+</script>
