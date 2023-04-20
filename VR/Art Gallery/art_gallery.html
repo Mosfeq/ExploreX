@@ -9,6 +9,12 @@
 
     <a-assets>
         <!-- Assets -->
+
+        <!-- Audio -->
+        <audio id="music" src="/assets/art gallery/audio/Erik-satie-gymnopedie-no1-piano.mp3"></audio>
+
+
+        <!-- Images & Videos -->
         <img id="backwalls" src="/assets/art gallery/backwall.png" />
         <img id="floor" src="/assets/art gallery/texture/floor4.png" />
         <img id="sidewalls" src="/assets/art gallery/sidewalls.avif" />
@@ -48,6 +54,8 @@
         <img id="site2" src="/assets/site2.jpg" />
         <img id="site3" src="/assets/site3.jpg" />
         <img id="site4" src="/assets/site4.jpg" />
+
+        <img id="info1" src="/assets/art gallery/Info Cards/Sunflower Serenade.png"
 
         <!-- Models -->
         <a-asset-item id="bench" src="/assets/models/bench.gltf"></a-asset-item>
@@ -194,7 +202,7 @@
     <a-box id="painting7-info" width="1.2" height="1.2" depth="0.1" position="-17.3 5 -15" rotation="0 180 0"></a-box>
     
     <a-box id="right-painting" width="6" height="8" depth="0.1" position="-12 5 15" src= #painting8></a-box>
-    <a-box id="painting8-info" width="1.2" height="1.2" depth="0.1" position="-15.8 5 15"></a-box>
+    <a-box id="painting8-info" width="1.2" height="1.2" depth="0.1" position="-15.8 5 15" src= #info1></a-box>
 
 
     <!-- Site 3 & Site  4-->
@@ -231,9 +239,9 @@
 
     <!-- <a-plane id="window" position="12.5 9 0" rotation="90 0 0" width="9" height="9" material="transparent: true; opacity: 0.7; color:white side: double"></a-plane> -->
 
-    <!-- <a-entity position="15 3 -10">
+    <a-entity position="15 3 -10">
         <a-link class="link" href="/VR/Site1/site1.html" rotation="0 -45 0" title="Go to site2" side="double" image= #site3 scale="2 2 2"></a-link>
-    </a-entity> -->
+    </a-entity>
 
 
     <!-- Corridor -->
@@ -243,6 +251,14 @@
 
     <a-box id="site1_2-sign" width="4" height="2" depth="0.1" position="-4.7 7.5 0" rotation="0 90 0" src= #site1_2 ></a-box>
     <a-box id="site3_4-sign" width="4" height="2" depth="0.1" position="4.7 7.5 0" rotation="0 90 0" src= #site3_4 ></a-box>
+
+
+    <!-- <a-entity position="0 3 20">
+        <a-sound src="#music" autoplay="true" loop="true"></a-sound>
+    </a-entity>
+    <a-entity position="0 3 -20">
+        <a-sound src="#music" autoplay="true" loop="true"></a-sound>
+    </a-entity> -->
 
     <a-camera look-controls wasd-controls="acceleration: 80" position="0 3 12">
         <a-cursor color="green">
