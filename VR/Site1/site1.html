@@ -15,33 +15,32 @@
             <video id="video" src="/assets/360/Borough4k.m4v"> </video>
 
             <!-- Button Textures -->
-            <img id="nextButtonTxt" src="/assets/textures/black marble.png" />
+            <img id="nextButtonTxt" src="/assets/360/next.png" />
+            <img id="backButtonTxt" src="/assets/360/back.png" />
+            <img id="homeButtonTxt" src="/assets/360/home.png" />
 
         </a-assets>
 
         <a-sky id="sky" src="#image1"></a-sky>
         <a-videosphere id="videosphere" src="#video" visible="false">
-            <a-plane id="playButton" class="play-pause" position="0 3 -5" height="1" width="2" color="green" side="double">
-                <a-text value="< Play >" align="center" rotation="0 180 0" side="double" position="0 0 0.1"></a-text>
+            <a-box id="borderBox" position="0 3 -5.1" height="1" width="2" depth="0.1" color="white"></a-box>
+            <a-plane id="playButton" class="play-pause" position="0 3 -5" height="1" width="2" color="black" side="double">
+                <a-text value="> Play" align="center" rotation="0 180 0" font-weight="bold" side="double" position="0 0 0.1"></a-text>
             </a-plane>
         </a-videosphere>
 
-        <a-plane class="next" id="nextButton" position="-5 0 -5" height="1" width="2" src=#nextButtonTxt>
-            <a-text value="Next" align="center"></a-text>
-        </a-plane>
-        <a-plane id="backButton" position="0 0 -5" height="1" width="2" color="red">
-            <a-text value="Back" align="center"></a-text>
-        </a-plane>
-        <a-plane id="homeButton" position="5 0 -5" height="1" width="2" color="yellow">
-            <a-text value="Home" align="center"></a-text>
-        </a-plane>
+        <a-plane class="next" id="nextButton" position="4 -3 -5" height="1" width="2" src=#nextButtonTxt></a-plane>
+        <a-plane id="backButton" position="-4 -3 -5" height="1" width="2" src=#backButtonTxt></a-plane>
+        <a-plane id="homeButton" position="0 -3 -5" height="1" width="2" color="yellow" src=#homeButtonTxt></a-plane>
 
         <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
             <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;"
                 material="color: white; shader: flat;" position="0 0 -1"></a-entity>
         </a-entity>
-        <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable" line="color: white"></a-entity>
-        <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: white"></a-entity>
+        <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable"
+            line="color: white"></a-entity>
+        <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable"
+            line="color: white"></a-entity>
 
     </a-scene>
 
@@ -61,12 +60,12 @@
     const text = playPause.querySelector('a-text');
 
     playPause.addEventListener('click', () => {
-        if (playPause.getAttribute('value') === '< Play >') {
+        if (playPause.getAttribute('value') === '> Play') {
             text.setAttribute('value', 'II Pause');
             playPause.setAttribute('value', 'II Pause');
-        } else {
-            text.setAttribute('value', '< Play >');
-            playPause.setAttribute('value', '< Play >');
+        } else {
+            text.setAttribute('value', '> Play');
+            playPause.setAttribute('value', '> Play');
         }
     });
 
