@@ -15,16 +15,28 @@
             <img id="image2" src="/assets/360/su.jpg">
             <img id="image3" src="/assets/360/su2.jpg">
             <video id="video" src="/assets/360/Borough4k.m4v"> </video>
+
+            <!-- Button Textures -->
+            <img id="nextButtonTxt" src="/assets/textures/black marble.png" />
+
         </a-assets>
         
         <a-sky id="sky" src="#image1"></a-sky>
         <a-videosphere id="videosphere" src="#video" visible="false">
-            <a-plane id="playButton" position="0 3 -5" height="1" width="2" color="green"></a-plane>
+            <a-plane id="playButton" position="0 3 -5" height="1" width="2" color="green">
+                <a-text value="Play" rotation="0 0 0" align="center"></a-text>
+            </a-plane>
         </a-videosphere>
 
-        <a-plane class="next" id="nextButton" position="-5 0 -5" height="1" width="2" color="white"></a-plane>
-        <a-plane id="backButton" position="0 0 -5" height="1" width="2" color="red"></a-plane>
-        <a-plane id="homeButton" position="5 0 -5" height="1" width="2" color="yellow"></a-plane>
+        <a-plane class="next" id="nextButton" position="-5 0 -5" height="1" width="2" src= #nextButtonTxt>
+            <a-text value="Next" align="center"></a-text>
+        </a-plane>
+        <a-plane id="backButton" position="0 0 -5" height="1" width="2" color="red">
+            <a-text value="Back" align="center"></a-text>
+        </a-plane>
+        <a-plane id="homeButton" position="5 0 -5" height="1" width="2" color="yellow">
+            <a-text value="Home" align="center"></a-text>
+        </a-plane>
 
         <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
             <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;" material="color: white; shader: flat;" position="0 0 -1"></a-entity>
