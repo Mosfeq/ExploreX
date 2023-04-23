@@ -213,6 +213,15 @@
     <a-box id="right-painting" width="6" height="8" depth="0.1" position="-12 5 15" src= #painting8></a-box>
     <a-box id="painting8-info" width="1.2" height="1.2" depth="0.1" position="-15.8 5 15" src= #info1></a-box>
 
+    <!-- Portals to Site 1 and 2 -->
+    <a-entity position="-15 3 10">
+        <a-link class="link" href="/VR/Site1/site1.html" rotation="0 -45 0" title="Go to Site 1" side="double" image= #site1 scale="2 2 2"></a-link>
+    </a-entity>
+
+    <a-entity position="-15 3 -10">
+        <a-link class="link" href="/VR/Site2/site2.html" rotation="0 45 0" title="Go to Site 2" side="double" image= #site2 scale="2 2 2"></a-link>
+    </a-entity>
+
 
     <!-- Site 3 & Site  4-->
     <a-box id="fireplace-border-left" width="0.1" height="3.7" depth="0.5" position="19 3 -4.3" material="color: white;" rotation="0 -90 0"></a-box>
@@ -249,12 +258,13 @@
 
     <!-- <a-plane id="window" position="12.5 9 0" rotation="90 0 0" width="9" height="9" material="transparent: true; opacity: 0.7; color:white side: double"></a-plane> -->
 
+    <!-- Portals to Site 3 and 4 -->
     <a-entity position="15 3 -10">
-        <a-link class="link" href="/VR/Site1/site1.html" rotation="0 -45 0" title="Go to site2" side="double" image= #site3 scale="2 2 2"></a-link>
+        <a-link class="link" href="/VR/Site3/site3.html" rotation="0 -45 0" title="Go to Site 3" side="double" image= #site3 scale="2 2 2"></a-link>
     </a-entity>
 
-    <a-entity position="15 3 -10">
-        <a-link class="link" href="/VR/Site1/site1.html" rotation="0 -45 0" title="Go to site2" side="double" image= #site3 scale="2 2 2"></a-link>
+    <a-entity position="15 3 10">
+        <a-link class="link" href="/VR/Site4/site4.html" rotation="0 45 0" title="Go to Site 4" side="double" image= #site4 scale="2 2 2"></a-link>
     </a-entity>
 
 
