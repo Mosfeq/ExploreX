@@ -1,14 +1,11 @@
 <script src="aframe.js"></script>
 
 <head>
-
-       
     <link rel="stylesheet" type="text/css" href="site1.css">
-
 </head>
 
 <div id="site1">
-    
+
     <a-scene cursor="rayOrigin: mouse" raycaster="objects: .raycastable">
         <a-assets>
             <img id="image1" src="/assets/360/random.jpg">
@@ -20,15 +17,15 @@
             <img id="nextButtonTxt" src="/assets/textures/black marble.png" />
 
         </a-assets>
-        
+
         <a-sky id="sky" src="#image1"></a-sky>
         <a-videosphere id="videosphere" src="#video" visible="false">
-            <a-plane id="playButton" position="0 3 -5" height="1" width="2" color="green">
-                <a-text value="Play" rotation="0 0 0" align="center"></a-text>
+            <a-plane id="playButton" class="play-pause" position="0 3 -5" height="1" width="2" color="green">
+                <a-text value="Play" align="center"></a-text>
             </a-plane>
         </a-videosphere>
 
-        <a-plane class="next" id="nextButton" position="-5 0 -5" height="1" width="2" src= #nextButtonTxt>
+        <a-plane class="next" id="nextButton" position="-5 0 -5" height="1" width="2" src=#nextButtonTxt>
             <a-text value="Next" align="center"></a-text>
         </a-plane>
         <a-plane id="backButton" position="0 0 -5" height="1" width="2" color="red">
@@ -39,7 +36,8 @@
         </a-plane>
 
         <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
-            <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;" material="color: white; shader: flat;" position="0 0 -1"></a-entity>
+            <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;"
+                material="color: white; shader: flat;" position="0 0 -1"></a-entity>
         </a-entity>
         <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable" line="color: white"></a-entity>
         <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: white"></a-entity>
@@ -57,30 +55,42 @@
 </div>
 
 <script>
+
+    const playPause = document.querySelector('.play-pause');
+    const text = playPause.querySelector('a-text');
+
+    playPause.addEventListener('click', () => {
+        if (playPause.getAttribute('value') === 'play') {
+            text.setAttribute('value', 'Pause');
+            playPause.setAttribute('value', 'pause');
+        } else {
+            text.setAttribute('value', 'Play');
+            playPause.setAttribute('value', 'play');
+        }
+    });
+
     var playButton = document.getElementById('playButton');
     var video = document.getElementById('video');
     var isPlaying = false;
-    
+
     video.addEventListener('play', function () {
         isPlaying = true;
-        playButton.innerText = 'Pause';
         setTimeout(repaint, 1000);
     });
-    
+
     video.addEventListener('pause', function () {
         isPlaying = false;
-        playButton.innerText = 'Play';
     });
-    
+
     playButton.addEventListener('click', function () {
         isPlaying ? video.pause() : video.play();
     }, false);
-    
+
     var homeButton = document.querySelector('#homeButton');
     homeButton.addEventListener('click', function () {
         window.location = '/VR/Art Gallery/art_gallery.html';
     });
-    
+
     // Initialize the current asset to be the first image
     var currentAssetIndex = 0;
     var assets = [
@@ -91,78 +101,78 @@
     ];
 
     // Add click event listener to the next button
-    document.getElementById("nextButton").addEventListener("click", function() {
+    document.getElementById("nextButton").addEventListener("click", function () {
 
-        // Hide the current asset
+        // Hide the current asset
         if (currentAssetIndex == assets.length - 1) {
-            // If the current asset is the video, hide the videosphere
+            // If the current asset is the video, hide the videosphere
             document.getElementById("videosphere").setAttribute("visible", "false");
             document.getElementById("playButton").style.display = "none";
 
-        }else {
+        } else {
             // If the current asset is an image, hide the sky
             document.getElementById("sky").setAttribute("visible", "false");
             document.getElementById("playButton").style.display = "none";
         }
-        
+
         // Increment the current asset index
         currentAssetIndex++;
-        
+
         // If we have cycled through all assets, reset to the first image
         if (currentAssetIndex >= assets.length) {
             currentAssetIndex = 0;
         }
-        
+
         // Show the next asset
         if (currentAssetIndex == assets.length - 1) {
             // If the next asset is the video, show the videosphere
             document.getElementById("videosphere").setAttribute("visible", "true");
             document.getElementById("playButton").style.display = "inline-block";
-        
-        }else {
+
+        } else {
             // If the next asset is an image, show the sky
             document.getElementById("sky").setAttribute("src", assets[currentAssetIndex].getAttribute("src"));
             document.getElementById("sky").setAttribute("visible", "true");
         }
 
-    });
+    });
 
     // Add click event listener to the back button
-    document.getElementById("backButton").addEventListener("click", function() {
+    document.getElementById("backButton").addEventListener("click", function () {
 
-    // Hide the current asset
-    if (currentAssetIndex == assets.length - 1) {
-        // If the current asset is the video, hide the videosphere
-        document.getElementById("videosphere").setAttribute("visible", "false");
-        document.getElementById("playButton").style.display = "none";
+        // Hide the current asset
+        if (currentAssetIndex == assets.length - 1) {
+            // If the current asset is the video, hide the videosphere
+            document.getElementById("videosphere").setAttribute("visible", "false");
+            document.getElementById("playButton").style.display = "none";
 
-    }else {
-        // If the current asset is an image, hide the sky
-        document.getElementById("sky").setAttribute("visible", "false");
-        document.getElementById("playButton").style.display = "none";
+        } else {
+            // If the current asset is an image, hide the sky
+            document.getElementById("sky").setAttribute("visible", "false");
+            document.getElementById("playButton").style.display = "none";
 
-    }
-    
-    // Decrement the current asset index
-    currentAssetIndex--;
-    
-    // If we have cycled through all assets, reset to the last asset
-    if (currentAssetIndex < 0) {
-         currentAssetIndex = assets.length - 1;
-    }
+        }
 
-    // Show the previous asset
-    if (currentAssetIndex == assets.length - 1) {
-        // If the previous asset is the video, show the videosphere
-        document.getElementById("videosphere").setAttribute("visible", "true");
-        document.getElementById("playButton").style.display = "inline-block";
+        // Decrement the current asset index
+        currentAssetIndex--;
 
-    }else {
-        // If the previous asset is an image, show the sky
-        document.getElementById("sky").setAttribute("src", assets[currentAssetIndex].getAttribute("src"));
-        document.getElementById("sky").setAttribute("visible", "true");
-    
-    }
+        // If we have cycled through all assets, reset to the last asset
+        if (currentAssetIndex < 0) {
+            currentAssetIndex = assets.length - 1;
+        }
 
-  });
+        // Show the previous asset
+        if (currentAssetIndex == assets.length - 1) {
+            // If the previous asset is the video, show the videosphere
+            document.getElementById("videosphere").setAttribute("visible", "true");
+            document.getElementById("playButton").style.display = "inline-block";
+
+        } else {
+            // If the previous asset is an image, show the sky
+            document.getElementById("sky").setAttribute("src", assets[currentAssetIndex].getAttribute("src"));
+            document.getElementById("sky").setAttribute("visible", "true");
+
+        }
+
+    });
 </script>

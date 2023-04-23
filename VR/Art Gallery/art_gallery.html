@@ -5,7 +5,7 @@
     window.addEventListener('click', () => document.querySelector('#fire2').play());
 </script>
 
-<a-scene>
+<a-scene cursor="rayOrigin: mouse" raycaster="objects: .raycastable">
 
     <a-assets>
         <!-- Assets -->
@@ -279,16 +279,18 @@
     <a-box id="nopetsign" width="1.5" height="2.25" depth="0.1" position="-4.7 5 -6" rotation="0 90 0" src= #nopets></a-box>
     <a-box id="nosmokingsign" width="1.5" height="2.25" depth="0.1" position="4.7 5 6" rotation="0 90 0" src= #nosmoking></a-box>
 
-    <!-- <a-entity position="0 3 20">
+    <a-entity position="0 3 20">
         <a-sound src="#music" autoplay="true" loop="true"></a-sound>
     </a-entity>
     <a-entity position="0 3 -20">
         <a-sound src="#music" autoplay="true" loop="true"></a-sound>
-    </a-entity> -->
+    </a-entity>
 
     <a-camera look-controls wasd-controls="acceleration: 80" position="0 3 12">
         <a-cursor color="green">
     </a-camera>
+    <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable" line="color: white"></a-entity>
+    <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: white"></a-entity>
 
 </a-scene>
 
