@@ -1,79 +1,143 @@
 <script src="aframe.js"></script>
 
-<a-scene>
-    <a-assets>
-        <img id="image1" src="/assets/360/su.jpg">
-        <img id="image2" src="/assets/360/su2.jpg">
-        <img id="image3" src="/assets/360/random.jpg">
-    </a-assets>
+<head>
 
-    <!-- set up your camera and controls with a red cursor -->
-    <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
-        <a-entity geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: green; shader: flat;" position="0 0 -1"></a-entity>
-    </a-entity>
+       
+    <link rel="stylesheet" type="text/css" href="site1.css">
 
-    <!-- your first 360 image -->
-    <a-sky id="sky1" src="#image1" visible="true"></a-sky>
+</head>
+
+<div id="site1">
+    
+    <a-scene>
+        <a-assets>
+            <img id="image1" src="/assets/360/random.jpg">
+            <img id="image2" src="/assets/360/su.jpg">
+            <img id="image3" src="/assets/360/su2.jpg">
+            <video id="video" src="/assets/360/Borough4k.m4v"> </video>
+        </a-assets>
         
-        <!-- your second 360 image, hidden by default -->
-        <a-sky id="sky2" src="#image2" visible="false"></a-sky>
-        <a-sky id="sky3" src="#image3" visible="false"></a-sky>
+        <a-sky id="sky" src="#image1"></a-sky>
+        <a-videosphere id="videosphere" src="#video" visible="false"></a-videosphere>
+    </a-scene>
 
-        <!-- your buttons to switch images -->
-        <a-entity id="prevButton" geometry="primitive: plane; width: 1; height: 0.5;" material="color: blue;" 
-            position="-1.5 -1 -3" text="value: Previous Image; align: center;" 
-            onclick="switchToPrevImage()">
-        </a-entity>
-
-        <a-entity id="nextButton" class="button" a-rounded="radius: 0.2; height: 0.05; width: 0.2; color: #1c1c1c" 
-            geometry="primitive: plane; width: 1; height: 0.5;" material="color: blue;" position="1.5 -1 -3" text="value: Next Image; align: center;"              
-            onclick="switchToNextImage()">
-        </a-entity>
-
-</a-scene>
+    <div id="overlay">
+        <div>
+            <button id="homeButton">Home</button>
+            <button id="backButton">Previous Asset</button>
+            <button id="playButton" style="display:none;">Play Video</button>
+            <button id="nextButton" >Next Asset</button>
+        </div>
+    </div>
+</div>
 
 <script>
-
-    function switchToNextImage() {
-        
-        var sky1 = document.getElementById("sky1");
-        var sky2 = document.getElementById("sky2");
-        var sky3 = document.getElementById("sky3");
-        
-        if (sky1.getAttribute("visible")) {
-            sky1.setAttribute("visible", false);
-            sky2.setAttribute("visible", true);
-            sky3.setAttribute("visible", true);
+    var playButton = document.getElementById('playButton');
+    var video = document.getElementById('video');
+    var isPlaying = false;
     
-        }if (sky2.getAttribute("visible")) {
-            sky1.setAttribute("visible", false);
-            sky2.setAttribute("visible", true);
-            sky3.setAttribute("visible", true);
-            
-        } else{
-            sky1.setAttribute("visible", true);
-            sky2.setAttribute("visible", false);
-            sky3.setAttribute("visible", false);
+    video.addEventListener('play', function () {
+        isPlaying = true;
+        playButton.innerText = 'Pause';
+        setTimeout(repaint, 1000);
+    });
+    
+    video.addEventListener('pause', function () {
+        isPlaying = false;
+        playButton.innerText = 'Play';
+    });
+    
+    playButton.addEventListener('click', function () {
+        isPlaying ? video.pause() : video.play();
+    }, false);
+    
+    var homeButton = document.querySelector('#homeButton');
+    homeButton.addEventListener('click', function () {
+        window.location = '/VR/Art Gallery/art_gallery.html';
+    });
+    
+    // Initialize the current asset to be the first image
+    var currentAssetIndex = 0;
+    var assets = [
+        document.getElementById("image1"),
+        document.getElementById("image2"),
+        document.getElementById("image3"),
+        document.getElementById("video")
+    ];
+
+    // Add click event listener to the next button
+    document.getElementById("nextButton").addEventListener("click", function() {
+
+        // Hide the current asset
+        if (currentAssetIndex == assets.length - 1) {
+            // If the current asset is the video, hide the videosphere
+            document.getElementById("videosphere").setAttribute("visible", "false");
+            document.getElementById("playButton").style.display = "none";
+
+        }else {
+            // If the current asset is an image, hide the sky
+            document.getElementById("sky").setAttribute("visible", "false");
+            document.getElementById("playButton").style.display = "none";
         }
+        
+        // Increment the current asset index
+        currentAssetIndex++;
+        
+        // If we have cycled through all assets, reset to the first image
+        if (currentAssetIndex >= assets.length) {
+            currentAssetIndex = 0;
+        }
+        
+        // Show the next asset
+        if (currentAssetIndex == assets.length - 1) {
+            // If the next asset is the video, show the videosphere
+            document.getElementById("videosphere").setAttribute("visible", "true");
+            document.getElementById("playButton").style.display = "inline-block";
+        
+        }else {
+            // If the next asset is an image, show the sky
+            document.getElementById("sky").setAttribute("src", assets[currentAssetIndex].getAttribute("src"));
+            document.getElementById("sky").setAttribute("visible", "true");
+        }
+
+    });
+
+    // Add click event listener to the back button
+    document.getElementById("backButton").addEventListener("click", function() {
+
+    // Hide the current asset
+    if (currentAssetIndex == assets.length - 1) {
+        // If the current asset is the video, hide the videosphere
+        document.getElementById("videosphere").setAttribute("visible", "false");
+        document.getElementById("playButton").style.display = "none";
+
+    }else {
+        // If the current asset is an image, hide the sky
+        document.getElementById("sky").setAttribute("visible", "false");
+        document.getElementById("playButton").style.display = "none";
+
+    }
+    
+    // Decrement the current asset index
+    currentAssetIndex--;
+    
+    // If we have cycled through all assets, reset to the last asset
+    if (currentAssetIndex < 0) {
+         currentAssetIndex = assets.length - 1;
+    }
+
+    // Show the previous asset
+    if (currentAssetIndex == assets.length - 1) {
+        // If the previous asset is the video, show the videosphere
+        document.getElementById("videosphere").setAttribute("visible", "true");
+        document.getElementById("playButton").style.display = "inline-block";
+
+    }else {
+        // If the previous asset is an image, show the sky
+        document.getElementById("sky").setAttribute("src", assets[currentAssetIndex].getAttribute("src"));
+        document.getElementById("sky").setAttribute("visible", "true");
     
     }
-    
-    function switchToPrevImage() {
-        
-        var sky1 = document.getElementById("sky1");
-        var sky2 = document.getElementById("sky2");
-        var sky3 = document.getElementById("sky3");
-        
-        if (sky1.getAttribute("visible")) {
-            sky1.setAttribute("visible", false);
-            sky2.setAttribute("visible", true);
-            sky3.setAttribute("visible", true);
-        } else {
-            sky1.setAttribute("visible", true);
-            sky2.setAttribute("visible", false);
-            sky3.setAttribute("visible", false);
-        }
-    
-    }
 
+  });
 </script>

@@ -1,0 +1,40 @@
+#overlay {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+}
+
+#overlay>div {
+    text-align: center;
+}
+
+#overlay>div>button {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 0.8em 2em;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+    margin-inline: 20px;
+}
+
+a-scene {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#app {
+    position: relative;
+}
