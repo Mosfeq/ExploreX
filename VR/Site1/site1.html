@@ -19,6 +19,10 @@
         
         <a-sky id="sky" src="#image1"></a-sky>
         <a-videosphere id="videosphere" src="#video" visible="false"></a-videosphere>
+
+        <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
+            <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;" material="color: white; shader: flat;" position="0 0 -1"></a-entity>
+        </a-entity>
     </a-scene>
 
     <div id="overlay">
