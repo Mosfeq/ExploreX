@@ -21,8 +21,8 @@
 
         <a-sky id="sky" src="#image1"></a-sky>
         <a-videosphere id="videosphere" src="#video" visible="false">
-            <a-plane id="playButton" class="play-pause" position="0 3 -5" height="1" width="2" color="green">
-                <a-text value="Play" align="center"></a-text>
+            <a-plane id="playButton" class="play-pause" position="0 3 -5" height="1" width="2" color="green" side="double">
+                <a-text value="< Play >" align="center" rotation="0 180 0" side="double" position="0 0 0.1"></a-text>
             </a-plane>
         </a-videosphere>
 
@@ -61,12 +61,12 @@
     const text = playPause.querySelector('a-text');
 
     playPause.addEventListener('click', () => {
-        if (playPause.getAttribute('value') === 'play') {
-            text.setAttribute('value', 'Pause');
-            playPause.setAttribute('value', 'pause');
-        } else {
-            text.setAttribute('value', 'Play');
-            playPause.setAttribute('value', 'play');
+        if (playPause.getAttribute('value') === '< Play >') {
+            text.setAttribute('value', 'II Pause');
+            playPause.setAttribute('value', 'II Pause');
+        } else {
+            text.setAttribute('value', '< Play >');
+            playPause.setAttribute('value', '< Play >');
         }
     });
 
@@ -76,11 +76,12 @@
 
     video.addEventListener('play', function () {
         isPlaying = true;
-        setTimeout(repaint, 1000);
+        setTimeout(repaint, 200);
     });
 
     video.addEventListener('pause', function () {
         isPlaying = false;
+        setTimeout(repaint, 200);
     });
 
     playButton.addEventListener('click', function () {
