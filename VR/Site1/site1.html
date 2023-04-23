@@ -18,21 +18,28 @@
         </a-assets>
         
         <a-sky id="sky" src="#image1"></a-sky>
-        <a-videosphere id="videosphere" src="#video" visible="false"></a-videosphere>
+        <a-videosphere id="videosphere" src="#video" visible="false">
+            <a-plane id="playButton" position="0 3 -5" height="1" width="1" color="green"></a-plane>
+        </a-videosphere>
 
         <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
             <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;" material="color: white; shader: flat;" position="0 0 -1"></a-entity>
         </a-entity>
+
+        <a-plane id="nextButton" position="-5 0 -5" height="1" width="1" color="white"></a-plane>
+        <a-plane id="backButton" position="0 0 -5" height="1" width="1" color="red"></a-plane>
+        <a-plane id="homeButton" position="5 0 -5" height="1" width="1" color="yellow"></a-plane>
+
     </a-scene>
 
-    <div id="overlay">
+    <!-- <div id="overlay">
         <div>
             <button id="homeButton">Home</button>
             <button id="backButton">Previous Asset</button>
             <button id="playButton" style="display:none;">Play Video</button>
             <button id="nextButton" >Next Asset</button>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <script>
