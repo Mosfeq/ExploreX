@@ -1,175 +1,97 @@
 <script src="aframe.js"></script>
 
-<head>
-    <title>Site 1</title>
-</head>
+<title>Site 1 Videos</title>
 
-<div id="site1">
+<a-scene cursor="rayOrigin: mouse" raycaster="objects: .raycastable">
+    <a-assets>
+        <img id="image1" src="/assets/360/random.jpg" />
+        <img id="image2" src="/assets/360/su.jpg" />
+        <img id="image3" src="/assets/360/su2.jpg" />
 
-    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .raycastable">
-        <a-assets>
-            <img id="image1" src="/assets/360/random.jpg">
-            <img id="image2" src="/assets/360/su.jpg">
-            <img id="image3" src="/assets/360/su2.jpg">
-            <video id="video" src="/assets/360/Borough4k.m4v"> </video>
+        <img id="nextButtonTxt" src="/assets/360/next.png" />
+        <img id="backButtonTxt" src="/assets/360/back.png" />
+        <img id="homeButtonTxt" src="/assets/360/home.png" />
+        <img id="videoButtonTxt" src="/assets/360/videos.png" />
+    </a-assets>
 
-            <!-- Button Textures -->
-            <img id="nextButtonTxt" src="/assets/360/next.png" />
-            <img id="backButtonTxt" src="/assets/360/back.png" />
-            <img id="homeButtonTxt" src="/assets/360/home.png" />
+    <a-sky class="sky" id="sky1" src="#image1" visible="true"></a-sky>
+    <a-sky class="sky" id="sky2" src="#image2" visible="false"></a-sky>
+    <a-sky class="sky" id="sky3" src="#image3" visible="false"></a-sky>
 
-        </a-assets>
+    <a-plane class="videos" id="videoButton" position="2 -3 -5" height="1" width="2" src="#videoButtonTxt"
+        color="orange">
+        <a-box id="borderBox" position="2 -3.1 -5" height="1.9" width="3.8" depth="0.1" color="white"></a-box>
+    </a-plane>
 
-        <a-sky id="sky" src="#image1"></a-sky>
-        <a-videosphere id="videosphere" src="#video" visible="false">
-            <a-box id="borderBox" position="0 3 -5.1" height="1" width="2" depth="0.1" color="white"></a-box>
-            <a-plane id="playButton" class="play-pause" position="0 3 -5" height="1" width="2" color="black"
-                side="double">
-                <a-text value="> Play" align="center" rotation="0 180 0" font-weight="bold" side="double"
-                    position="0 0 0.1"></a-text>
-            </a-plane>
-        </a-videosphere>
+    <a-plane class="next" id="nextButton" position="5.5 -3 -5" height="1" width="2" src="#nextButtonTxt"
+        color="turquoise">
+        <a-box id="borderBox" position="5.5 -3.1 -5" height="1.9" width="3.8" depth="0.1" color="white"></a-box>
+    </a-plane>
 
-        <a-plane class="next" id="nextButton" position="4 -3 -5" height="1" width="2" src=#nextButtonTxt></a-plane>
-        <a-plane id="backButton" position="-4 -3 -5" height="1" width="2" src=#backButtonTxt></a-plane>
-        <a-plane id="homeButton" position="0 -3 -5" height="1" width="2" color="yellow" src=#homeButtonTxt></a-plane>
+    <a-plane id="backButton" position="-5.5 -3 -5" height="1" width="2" src="#backButtonTxt" color="turquoise">
+        <a-box id="borderBox" position="-5.5 -3.1 -5" height="1.9" width="3.8" depth="0.1" color="white"></a-box>
+    </a-plane>
 
-        <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
-            <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;"
-                material="color: white; shader: flat;" position="0 0 -1"></a-entity>
-        </a-entity>
-        <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable"
-            line="color: white"></a-entity>
-        <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable"
-            line="color: white"></a-entity>
+    <a-plane id="homeButton" position="-2 -3 -5" height="1" width="2" color="green" src="#homeButtonTxt">
+        <a-box id="borderBox" position="-2 -3.1 -5" height="1.9" width="3.8" depth="0.1" color="white"></a-box>
+    </a-plane>
 
-    </a-scene>
-</div>
+    <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
+        <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;"
+            material="color: white; shader: flat;" position="0 0 -1"></a-entity>
+    </a-entity>
+    <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable" line="color: white"></a-entity>
+    <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: white"></a-entity>
+
+</a-scene>
 
 <script>
 
-    const playPause = document.querySelector('.play-pause');
-    const text = playPause.querySelector('a-text');
-    
-    playPause.addEventListener('click', () => {
-        const video = document.querySelector('#video');
-
-        if (video.paused) {
-            text.setAttribute('value', '> Play');
-            playPause.setAttribute('value', '> Play');
-
-        } else {
-            text.setAttribute('value', 'II Pause');
-            playPause.setAttribute('value', 'II Pause');
-
-        }
+    var homeButton = document.querySelector("#homeButton");
+    homeButton.addEventListener("click", function () {
+        window.location = "/VR/Art Gallery/art_gallery.html";
     });
 
-    var playButton = document.getElementById('playButton');
-    var video = document.getElementById('video');
-    var isPlaying = false;
-
-    video.addEventListener('play', function () {
-        isPlaying = true;
-        setTimeout(repaint, 200);
+    var videoButton = document.querySelector("#videoButton");
+    videoButton.addEventListener("click", function () {
+        window.location = "/VR/Site1/site1_videos.html";
     });
 
-    video.addEventListener('pause', function () {
-        isPlaying = false;
-        setTimeout(repaint, 200);
-    });
+    var imageIndex = 0;
 
-    playButton.addEventListener('click', function () {
-        isPlaying ? video.pause() : video.play();
-    }, false);
-
-    var homeButton = document.querySelector('#homeButton');
-    homeButton.addEventListener('click', function () {
-        window.location = '/VR/Art Gallery/art_gallery.html';
-    });
-
-    // Initialise the current asset to be the first image
-    var currentAssetIndex = 0;
-    var assets = [
-        document.getElementById("image1"),
-        document.getElementById("image2"),
-        document.getElementById("image3"),
-        document.getElementById("video")
-    ];
-
-    // Add click event listener to the next button
     document.getElementById("nextButton").addEventListener("click", function () {
+        var images = document.querySelectorAll(".sky");
+        var numImages = images.length;
 
-        // Hide the current asset
-        if (currentAssetIndex == assets.length - 1) {
-            // If the current asset is the video, hide the videosphere
-            document.getElementById("videosphere").setAttribute("visible", "false");
-            document.getElementById("playButton").style.display = "none";
+        // hide the current image
+        images[imageIndex].setAttribute("visible", "false");
 
-        } else {
-            // If the current asset is an image, hide the sky
-            document.getElementById("sky").setAttribute("visible", "false");
-            document.getElementById("playButton").style.display = "none";
+        // update imageIndex to point to the next image
+        imageIndex++;
+
+        if (imageIndex >= numImages) {
+            imageIndex = 0;
         }
 
-        // Increment the current asset index
-        currentAssetIndex++;
-
-        // If we have cycled through all assets, reset to the first image
-        if (currentAssetIndex >= assets.length) {
-            currentAssetIndex = 0;
-        }
-
-        // Show the next asset
-        if (currentAssetIndex == assets.length - 1) {
-            // If the next asset is the video, show the videosphere
-            document.getElementById("videosphere").setAttribute("visible", "true");
-            document.getElementById("playButton").style.display = "inline-block";
-
-        } else {
-            // If the next asset is an image, show the sky
-            document.getElementById("sky").setAttribute("src", assets[currentAssetIndex].getAttribute("src"));
-            document.getElementById("sky").setAttribute("visible", "true");
-        }
-
+        // show the next image
+        images[imageIndex].setAttribute("visible", "true");
     });
 
-    // Add click event listener to the back button
     document.getElementById("backButton").addEventListener("click", function () {
+        var images = document.querySelectorAll(".sky");
+        var numImages = images.length;
 
-        // Hide the current asset
-        if (currentAssetIndex == assets.length - 1) {
-            // If the current asset is the video, hide the videosphere
-            document.getElementById("videosphere").setAttribute("visible", "false");
-            document.getElementById("playButton").style.display = "none";
+        // hide the current image
+        images[imageIndex].setAttribute("visible", "false");
 
-        } else {
-            // If the current asset is an image, hide the sky
-            document.getElementById("sky").setAttribute("visible", "false");
-            document.getElementById("playButton").style.display = "none";
+        // update imageIndex to point to the next image
+        imageIndex--;
 
+        if (imageIndex < 0) {
+            imageIndex = numImages - 1;
         }
 
-        // Decrement the current asset index
-        currentAssetIndex--;
-
-        // If we have cycled through all assets, reset to the last asset
-        if (currentAssetIndex < 0) {
-            currentAssetIndex = assets.length - 1;
-        }
-
-        // Show the previous asset
-        if (currentAssetIndex == assets.length - 1) {
-            // If the previous asset is the video, show the videosphere
-            document.getElementById("videosphere").setAttribute("visible", "true");
-            document.getElementById("playButton").style.display = "inline-block";
-
-        } else {
-            // If the previous asset is an image, show the sky
-            document.getElementById("sky").setAttribute("src", assets[currentAssetIndex].getAttribute("src"));
-            document.getElementById("sky").setAttribute("visible", "true");
-
-        }
-
+        // show the next image
+        images[imageIndex].setAttribute("visible", "true");
     });
 </script>

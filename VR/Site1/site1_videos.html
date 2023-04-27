@@ -1,0 +1,192 @@
+<script src="aframe.js"></script>
+
+<head>
+  <title>Site 1</title>
+</head>
+
+<div id="site1">
+  <a-scene cursor="rayOrigin: mouse" raycaster="objects: .raycastable">
+    <a-assets>
+      <video id="video" src="/assets/360/Borough4k.m4v"></video>
+      <video id="video1" src="/assets/360/cat_example.mp4"></video>
+
+      <!-- Button Textures -->
+      <img id="nextButtonTxt" src="/assets/360/next.png" />
+      <img id="backButtonTxt" src="/assets/360/back.png" />
+      <img id="homeButtonTxt" src="/assets/360/home.png" />
+      <img id="imageButtonTxt" src="/assets/360/images.png" />
+    </a-assets>
+
+    <a-videosphere id="videosphere" src="#video">
+      <a-box id="borderBox" position="0 3 -5.1" height="1" width="1.95" depth="0.1" color="white"></a-box>
+      <a-plane id="playButton" class="play-pause" position="0 3 -5" height="1" width="2" color="black" side="double">
+        <a-text value="> Play" align="center" rotation="0 180 0" font-weight="bold" side="double" position="0 0 0.1"
+          color="red"></a-text>
+      </a-plane>
+    </a-videosphere>
+
+    <a-videosphere id="videosphere1" src="#video1" visible="false">
+      <a-box id="borderBox" position="0 4 -5.1" height="1" width="2" depth="0.1" color="white"></a-box>
+      <a-plane id="playButton1" class="play-pause1" position="0 4 -5" height="1" width="2" color="black" side="double">
+        <a-text value="> Play" align="center" rotation="0 180 0" font-weight="bold" side="double" position="0 0 0.1"
+          color="red"></a-text>
+      </a-plane>
+    </a-videosphere>
+
+    <a-plane class="image" id="imageButton" position="2 -3 -5" height="1" width="2" src="#imageButtonTxt"
+      color="orange">
+      <a-box id="borderBox" position="2 -3.1 -5" height="1.9" width="3.8" depth="0.1" color="white"></a-box>
+    </a-plane>
+
+    <a-plane class="next" id="nextButton" position="5.5 -3 -5" height="1" width="2" src="#nextButtonTxt"
+      color="turquoise">
+      <a-box id="borderBox" position="5.5 -3.1 -5" height="1.9" width="3.8" depth="0.1" color="white"></a-box>
+    </a-plane>
+
+    <a-plane id="backButton" position="-5.5 -3 -5" height="1" width="2" src="#backButtonTxt" color="turquoise">
+      <a-box id="borderBox" position="-5.5 -3.1 -5" height="1.9" width="3.8" depth="0.1" color="white"></a-box>
+    </a-plane>
+
+    <a-plane id="homeButton" position="-2 -3 -5" height="1" width="2" color="green" src="#homeButtonTxt">
+      <a-box id="borderBox" position="-2 -3.1 -5" height="1.9" width="3.8" depth="0.1" color="white"></a-box>
+    </a-plane>
+
+    <a-entity camera look-controls cursor="fuse: false; fuseTimeout: 0">
+      <a-entity geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.02;"
+        material="color: white; shader: flat;" position="0 0 -1"></a-entity>
+    </a-entity>
+    <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable" line="color: white"></a-entity>
+    <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: white"></a-entity>
+
+  </a-scene>
+</div>
+
+<script>
+  const playPause = document.querySelector(".play-pause");
+  const text = playPause.querySelector("a-text");
+
+  playPause.addEventListener("click", () => {
+    if (playPause.getAttribute("value") === "> Play") {
+      text.setAttribute("value", "II Pause");
+      playPause.setAttribute("value", "II Pause");
+    } else {
+      text.setAttribute("value", "> Play");
+      playPause.setAttribute("value", "> Play");
+    }
+  });
+
+  const playPause1 = document.querySelector(".play-pause1");
+  const text1 = playPause1.querySelector("a-text");
+
+  playPause1.addEventListener("click", () => {
+    if (playPause1.getAttribute("value") === "> Play") {
+      text1.setAttribute("value", "II Pause");
+      playPause1.setAttribute("value", "II Pause");
+    } else {
+      text1.setAttribute("value", "> Play");
+      playPause1.setAttribute("value", "> Play");
+    }
+  });
+
+  var playButton = document.getElementById("playButton");
+  var video = document.getElementById("video");
+  var isPlaying = false;
+
+  var playButton1 = document.getElementById("playButton1");
+  var video1 = document.getElementById("video1");
+  var isPlaying1 = false;
+
+  video.addEventListener("play", function () {
+    isPlaying = true;
+    setTimeout(repaint, 200);
+  });
+
+  video.addEventListener("pause", function () {
+    isPlaying = false;
+    setTimeout(repaint, 200);
+  });
+
+  playButton.addEventListener("click",function () {
+      isPlaying ? video.pause() : video.play();
+    },
+    false
+  );
+
+  video1.addEventListener("play", function () {
+    isPlaying1 = true;
+    setTimeout(repaint, 200);
+  });
+
+  video1.addEventListener("pause", function () {
+    isPlaying1 = false;
+    setTimeout(repaint, 200);
+  });
+
+  playButton1.addEventListener("click", function () {
+      isPlaying1 ? video1.pause() : video1.play();
+    },
+    false
+  );
+
+  var homeButton = document.querySelector("#homeButton");
+  homeButton.addEventListener("click", function () {
+    window.location = "/VR/Art Gallery/art_gallery.html";
+  });
+
+  var imageButton = document.querySelector("#imageButton");
+  imageButton.addEventListener("click", function () {
+    window.location = "/VR/Site1/site1.html";
+  });
+
+  var videoIndex = 0;
+
+  document.getElementById("nextButton").addEventListener("click", function () {
+    videoIndex++;
+
+    if (videoIndex > 1) {
+      videoIndex = 0;
+    }
+
+    var videosphere = document.getElementById("videosphere");
+    var videosphere1 = document.getElementById("videosphere1");
+
+    if (videoIndex == 0) {
+      videosphere.setAttribute("visible", "true");
+      videosphere1.setAttribute("visible", "false");
+      document.getElementById("playButton").style.display = "inline-block";
+      document.getElementById("playButton1").style.display = "none";
+
+    } else {
+      videosphere.setAttribute("visible", "false");
+      videosphere1.setAttribute("visible", "true");
+      document.getElementById("playButton").style.display = "none";
+      document.getElementById("playButton1").style.display = "inline-block";
+
+    }
+  });
+
+  document.getElementById("backButton").addEventListener("click", function () {
+    videoIndex--;
+
+    if (videoIndex < 0) {
+      videoIndex = 1;
+    }
+
+    var videosphere = document.getElementById("videosphere");
+    var videosphere1 = document.getElementById("videosphere1");
+
+    if (videoIndex == 0) {
+      videosphere.setAttribute("visible", "true");
+      videosphere1.setAttribute("visible", "false");
+      document.getElementById("playButton").style.display = "inline-block";
+      document.getElementById("playButton1").style.display = "none";
+
+    } else {
+      videosphere.setAttribute("visible", "false");
+      videosphere1.setAttribute("visible", "true");
+      document.getElementById("playButton1").style.display = "inline-block";
+      document.getElementById("playButton").style.display = "none";
+
+    }
+  });
+</script>
