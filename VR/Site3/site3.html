@@ -57,14 +57,18 @@
 
     const playPause = document.querySelector('.play-pause');
     const text = playPause.querySelector('a-text');
-
+    
     playPause.addEventListener('click', () => {
-        if (playPause.getAttribute('value') === '> Play') {
-            text.setAttribute('value', 'II Pause');
-            playPause.setAttribute('value', 'II Pause');
-        } else {
+        const video = document.querySelector('#video');
+
+        if (video.paused) {
             text.setAttribute('value', '> Play');
             playPause.setAttribute('value', '> Play');
+
+        } else {
+            text.setAttribute('value', 'II Pause');
+            playPause.setAttribute('value', 'II Pause');
+
         }
     });
 
